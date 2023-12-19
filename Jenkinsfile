@@ -24,6 +24,6 @@ env.pip_autosar_tool_env = "cdg.de"
 env.pip_project_variant = "VIP_MAIN_BOARD"
 
 //Define stages
-env.pip_sonar_stage = "false"
+env.artifactory_upload_stage = "false"
 
 execArcBswPipeline()
