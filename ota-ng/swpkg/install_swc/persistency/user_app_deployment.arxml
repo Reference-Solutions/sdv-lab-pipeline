@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>xAAP</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>UCMS</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>BT</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE>
+                  <SHORT-NAME>Persistency</SHORT-NAME>
+                  <AR-PACKAGES>
+                    <AR-PACKAGE>
+                      <SHORT-NAME>PersistencyKeyValueStorages</SHORT-NAME>
+                      <ELEMENTS>
+                        <PERSISTENCY-KEY-VALUE-STORAGE>
+                          <SHORT-NAME>user_app_component_KeyValueStorage_PKVS</SHORT-NAME>
+                          <MINIMUM-SUSTAINED-SIZE>64</MINIMUM-SUSTAINED-SIZE>
+                          <UPDATE-STRATEGY>KEEP-EXISTING</UPDATE-STRATEGY>
+                          <VERSION>1.0.0-0</VERSION>
+                          <KEY-VALUE-PAIRS>
+                            <PERSISTENCY-KEY-VALUE-PAIR>
+                              <SHORT-NAME>app_id</SHORT-NAME>
+                              <UPDATE-STRATEGY>OVERWRITE</UPDATE-STRATEGY>
+                              <INIT-VALUE>
+                                <TEXT-VALUE-SPECIFICATION>
+                                  <VALUE>swc2</VALUE>
+                                </TEXT-VALUE-SPECIFICATION>
+                              </INIT-VALUE>
+                              <VALUE-DATA-TYPE-REF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/AUTOSAR/StdTypes/string</VALUE-DATA-TYPE-REF>
+                            </PERSISTENCY-KEY-VALUE-PAIR>
+                          </KEY-VALUE-PAIRS>
+                          <URI>/opt/vrte/user_app/data</URI>
+                        </PERSISTENCY-KEY-VALUE-STORAGE>
+                      </ELEMENTS>
+                    </AR-PACKAGE>
+                    <AR-PACKAGE>
+                      <SHORT-NAME>PersistencyPortPrototypeToKeyValueStorageMappings</SHORT-NAME>
+                      <ELEMENTS>
+                        <PERSISTENCY-PORT-PROTOTYPE-TO-KEY-VALUE-STORAGE-MAPPING>
+                          <SHORT-NAME>user_app_component_KeyValueStorage_MAPPING</SHORT-NAME>
+                          <PORT-PROTOTYPE-IREF>
+                            <CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF DEST="ROOT-SW-COMPONENT-PROTOTYPE">/xAAP/UCMS/BT/Executables/user_app/RootSWVomponentUserApp</CONTEXT-ROOT-SW-COMPONENT-PROTOTYPE-REF>
+                            <TARGET-PORT-PROTOTYPE-REF DEST="R-PORT-PROTOTYPE">/xAAP/UCMS/BT/Persistency/AppDesign/SWComponent/user_app_component/KeyValueStorage</TARGET-PORT-PROTOTYPE-REF>
+                          </PORT-PROTOTYPE-IREF>
+                          <PROCESS-REF DEST="PROCESS">/xAAP/UCMS/BT/Processes/swp_user_app_1_random_data</PROCESS-REF>
+                          <KEY-VALUE-STORAGE-REF DEST="PERSISTENCY-KEY-VALUE-STORAGE">/xAAP/UCMS/BT/Persistency/PersistencyKeyValueStorages/user_app_component_KeyValueStorage_PKVS</KEY-VALUE-STORAGE-REF>
+                        </PERSISTENCY-PORT-PROTOTYPE-TO-KEY-VALUE-STORAGE-MAPPING>
+                      </ELEMENTS>
+                    </AR-PACKAGE>
+                  </AR-PACKAGES>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>xAAP</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>UCMS</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>BT</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE>
+                  <SHORT-NAME>Executables</SHORT-NAME>
+                  <ELEMENTS>
+                    <EXECUTABLE>
+                      <SHORT-NAME>user_app</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="VRTE">
+                            <SD GID="path">/opt/app/user_app</SD>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <REPORTING-BEHAVIOR>DOES-NOT-REPORT-EXECUTION-STATE</REPORTING-BEHAVIOR>
+                      <ROOT-SW-COMPONENT-PROTOTYPE>
+                        <SHORT-NAME>RootSWVomponentUserApp</SHORT-NAME>
+                        <APPLICATION-TYPE-TREF DEST="ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE">/xAAP/UCMS/BT/Persistency/AppDesign/SWComponent/user_app_component</APPLICATION-TYPE-TREF>
+                      </ROOT-SW-COMPONENT-PROTOTYPE>
+                    </EXECUTABLE>
+                    <EXECUTABLE>
+                      <SHORT-NAME>arapipcd</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="VRTE">
+                            <SD GID="path">/opt/app/arapipcd</SD>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+                    </EXECUTABLE>
+                    <EXECUTABLE>
+                      <SHORT-NAME>ucm_pkgmanager</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="VRTE">
+                            <SD GID="path">/opt/vrte/ucm-pkgmanager/bin/ara-pkgmanagerd</SD>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+                    </EXECUTABLE>
+                    <EXECUTABLE>
+                      <SHORT-NAME>crypto_daemon</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="VRTE">
+                            <SD GID="path">/opt/vrte/crypto_daemon/bin/crypto_daemon</SD>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <REPORTING-BEHAVIOR>REPORTS-EXECUTION-STATE</REPORTING-BEHAVIOR>
+                    </EXECUTABLE>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+                <AR-PACKAGE>
+                  <SHORT-NAME>Processes</SHORT-NAME>
+                  <ELEMENTS>
+                    <PROCESS>
+                      <SHORT-NAME>swp_user_app_1_random_data</SHORT-NAME>
+                      <EXECUTABLE-REF DEST="EXECUTABLE">/xAAP/UCMS/BT/Executables/user_app</EXECUTABLE-REF>
+                      <STATE-DEPENDENT-STARTUP-CONFIGS>
+                        <STATE-DEPENDENT-STARTUP-CONFIG>
+                          <FUNCTION-GROUP-STATE-IREFS>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/DefaultFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/DefaultFG/On</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                          </FUNCTION-GROUP-STATE-IREFS>
+                          <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/xAAP/UCMS/BT/StartupConfigs/user_app_StartupConfig_On</STARTUP-CONFIG-REF>
+                        </STATE-DEPENDENT-STARTUP-CONFIG>
+                        <STATE-DEPENDENT-STARTUP-CONFIG>
+                          <FUNCTION-GROUP-STATE-IREFS>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/DefaultFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/DefaultFG/Verify</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                          </FUNCTION-GROUP-STATE-IREFS>
+                          <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/xAAP/UCMS/BT/StartupConfigs/user_app_StartupConfig_Verify</STARTUP-CONFIG-REF>
+                        </STATE-DEPENDENT-STARTUP-CONFIG>
+                      </STATE-DEPENDENT-STARTUP-CONFIGS>
+                    </PROCESS>
+                    <PROCESS>
+                      <SHORT-NAME>arapipcd</SHORT-NAME>
+                      <EXECUTABLE-REF DEST="EXECUTABLE">/xAAP/UCMS/BT/Executables/arapipcd</EXECUTABLE-REF>
+                      <STATE-DEPENDENT-STARTUP-CONFIGS>
+                        <STATE-DEPENDENT-STARTUP-CONFIG>
+                          <FUNCTION-GROUP-STATE-IREFS>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/MachineFG/Restart</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/MachineFG/Shutdown</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/MachineFG/Startup</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                          </FUNCTION-GROUP-STATE-IREFS>
+                          <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/xAAP/UCMS/BT/StartupConfigs/arapipcd_StartupConfig</STARTUP-CONFIG-REF>
+                        </STATE-DEPENDENT-STARTUP-CONFIG>
+                      </STATE-DEPENDENT-STARTUP-CONFIGS>
+                    </PROCESS>
+                    <PROCESS>
+                      <SHORT-NAME>crypto_daemon</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="VRTE">
+                            <SD GID="uid">0</SD>
+                            <SD GID="gid">0</SD>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <EXECUTABLE-REF DEST="EXECUTABLE">/xAAP/UCMS/BT/Executables/crypto_daemon</EXECUTABLE-REF>
+                      <STATE-DEPENDENT-STARTUP-CONFIGS>
+                        <STATE-DEPENDENT-STARTUP-CONFIG>
+                          <FUNCTION-GROUP-STATE-IREFS>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/MachineFG/Restart</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/MachineFG/Shutdown</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/MachineFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/MachineFG/Startup</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                          </FUNCTION-GROUP-STATE-IREFS>
+                          <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/xAAP/UCMS/BT/StartupConfigs/crypto_daemon_StartupConfig</STARTUP-CONFIG-REF>
+                        </STATE-DEPENDENT-STARTUP-CONFIG>
+                      </STATE-DEPENDENT-STARTUP-CONFIGS>
+                    </PROCESS>
+                    <PROCESS>
+                      <SHORT-NAME>ucm_pkgmanager</SHORT-NAME>
+                      <EXECUTABLE-REF DEST="EXECUTABLE">/xAAP/UCMS/BT/Executables/ucm_pkgmanager</EXECUTABLE-REF>
+                      <STATE-DEPENDENT-STARTUP-CONFIGS>
+                        <STATE-DEPENDENT-STARTUP-CONFIG>
+                          <FUNCTION-GROUP-STATE-IREFS>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/PlatformFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/PlatformFG/On</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                            <FUNCTION-GROUP-STATE-IREF>
+                              <CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/PlatformFG</CONTEXT-MODE-DECLARATION-GROUP-PROTOTYPE-REF>
+                              <TARGET-MODE-DECLARATION-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/PlatformFG/Verify</TARGET-MODE-DECLARATION-REF>
+                            </FUNCTION-GROUP-STATE-IREF>
+                          </FUNCTION-GROUP-STATE-IREFS>
+                          <STARTUP-CONFIG-REF DEST="STARTUP-CONFIG">/xAAP/UCMS/BT/StartupConfigs/ucm_pkgmanager_StartupConfig</STARTUP-CONFIG-REF>
+                        </STATE-DEPENDENT-STARTUP-CONFIG>
+                      </STATE-DEPENDENT-STARTUP-CONFIGS>
+                    </PROCESS>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+                <AR-PACKAGE>
+                  <SHORT-NAME>StartupConfigs</SHORT-NAME>
+                  <ELEMENTS>
+                    <STARTUP-CONFIG>
+                      <SHORT-NAME>user_app_StartupConfig_On</SHORT-NAME>
+                      <ENVIRONMENT-VARIABLES>
+                        <TAG-WITH-OPTIONAL-VALUE>
+                          <KEY>MODE</KEY>
+                          <VALUE>On</VALUE>
+                        </TAG-WITH-OPTIONAL-VALUE>
+                      </ENVIRONMENT-VARIABLES>
+                    </STARTUP-CONFIG>
+                    <STARTUP-CONFIG>
+                      <SHORT-NAME>user_app_StartupConfig_Verify</SHORT-NAME>
+                      <ENVIRONMENT-VARIABLES>
+                        <TAG-WITH-OPTIONAL-VALUE>
+                          <KEY>MODE</KEY>
+                          <VALUE>Verify</VALUE>
+                        </TAG-WITH-OPTIONAL-VALUE>
+                      </ENVIRONMENT-VARIABLES>
+                    </STARTUP-CONFIG>
+                    <STARTUP-CONFIG>
+                      <SHORT-NAME>arapipcd_StartupConfig</SHORT-NAME>
+                      <ENVIRONMENT-VARIABLES>
+                        <TAG-WITH-OPTIONAL-VALUE>
+                          <KEY>LD_LIBRARY_PATH</KEY>
+                          <VALUE>/lib:/usr/lib:/opt/vrte/lib</VALUE>
+                        </TAG-WITH-OPTIONAL-VALUE>
+                      </ENVIRONMENT-VARIABLES>
+                    </STARTUP-CONFIG>
+                    <STARTUP-CONFIG>
+                      <SHORT-NAME>crypto_daemon_StartupConfig</SHORT-NAME>
+                      <ENVIRONMENT-VARIABLES>
+                        <TAG-WITH-OPTIONAL-VALUE>
+                          <KEY>LD_LIBRARY_PATH</KEY>
+                          <VALUE>/opt/vrte/crypto_daemon/lib:/opt/vrte/lib:/opt/vrte/usr/lib:/usr/lib:/lib:/proc/boot</VALUE>
+                        </TAG-WITH-OPTIONAL-VALUE>
+                        <TAG-WITH-OPTIONAL-VALUE>
+                          <KEY>ECUCFG_ENV_VAR_ROOTFOLDER</KEY>
+                          <VALUE>/opt/vrte/crypto_daemon/etc/ecu-cfg</VALUE>
+                        </TAG-WITH-OPTIONAL-VALUE>
+                      </ENVIRONMENT-VARIABLES>
+                      <PROCESS-ARGUMENTS>
+                        <PROCESS-ARGUMENT>
+                          <ARGUMENT>-k</ARGUMENT>
+                        </PROCESS-ARGUMENT>
+                        <PROCESS-ARGUMENT>
+                          <ARGUMENT>ecucfg</ARGUMENT>
+                        </PROCESS-ARGUMENT>
+                        <PROCESS-ARGUMENT>
+                          <ARGUMENT>-c</ARGUMENT>
+                        </PROCESS-ARGUMENT>
+                        <PROCESS-ARGUMENT>
+                          <ARGUMENT>/opt/vrte/crypto_daemon/data</ARGUMENT>
+                        </PROCESS-ARGUMENT>
+                      </PROCESS-ARGUMENTS>
+                      <SCHEDULING-POLICY>Round Robin</SCHEDULING-POLICY>
+                      <SCHEDULING-PRIORITY>1</SCHEDULING-PRIORITY>
+                      <TIMEOUT>
+                        <ENTER-TIMEOUT-VALUE>30.0</ENTER-TIMEOUT-VALUE>
+                        <EXIT-TIMEOUT-VALUE>30.0</EXIT-TIMEOUT-VALUE>
+                      </TIMEOUT>
+                    </STARTUP-CONFIG>
+                    <STARTUP-CONFIG>
+                      <SHORT-NAME>ucm_pkgmanager_StartupConfig</SHORT-NAME>
+                      <ENVIRONMENT-VARIABLES>
+                        <TAG-WITH-OPTIONAL-VALUE>
+                          <KEY>LD_LIBRARY_PATH</KEY>
+                          <VALUE>/opt/vrte/ucm-pkgmanager:/opt/vrte/usr/lib:/opt/vrte/lib:/usr/lib:/lib:/proc/boot</VALUE>
+                        </TAG-WITH-OPTIONAL-VALUE>
+                        <TAG-WITH-OPTIONAL-VALUE>
+                          <KEY>ECUCFG_ENV_VAR_ROOTFOLDER</KEY>
+                          <VALUE>/opt/vrte/ucm-pkgmanager/etc/ecu-cfg</VALUE>
+                        </TAG-WITH-OPTIONAL-VALUE>
+                      </ENVIRONMENT-VARIABLES>
+                      <PROCESS-ARGUMENTS>
+                        <PROCESS-ARGUMENT>
+                          <ARGUMENT>-a</ARGUMENT>
+                        </PROCESS-ARGUMENT>
+                      </PROCESS-ARGUMENTS>
+                      <SCHEDULING-POLICY>First In First Out</SCHEDULING-POLICY>
+                      <SCHEDULING-PRIORITY>1</SCHEDULING-PRIORITY>
+                      <TIMEOUT>
+                        <ENTER-TIMEOUT-VALUE>100.0</ENTER-TIMEOUT-VALUE>
+                        <EXIT-TIMEOUT-VALUE>100.0</EXIT-TIMEOUT-VALUE>
+                      </TIMEOUT>
+                    </STARTUP-CONFIG>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+                <AR-PACKAGE>
+                  <SHORT-NAME>ProcessToMachineMappings</SHORT-NAME>
+                  <ELEMENTS>
+                    <PROCESS-TO-MACHINE-MAPPING-SET>
+                      <SHORT-NAME>execution_manifest_ProcessToMachineMappingSet</SHORT-NAME>
+                      <PROCESS-TO-MACHINE-MAPPINGS>
+                        <PROCESS-TO-MACHINE-MAPPING>
+                          <SHORT-NAME>Process_Machine_Mapping</SHORT-NAME>
+                          <MACHINE-REF DEST="MACHINE">/xAAP/UCMS/BT/Machine</MACHINE-REF>
+                          <PROCESS-REF DEST="PROCESS">/xAAP/UCMS/BT/Processes/swp_user_app_1_random_data</PROCESS-REF>
+                        </PROCESS-TO-MACHINE-MAPPING>
+                        <PROCESS-TO-MACHINE-MAPPING>
+                          <SHORT-NAME>crypto_daemon_Machine_Mapping</SHORT-NAME>
+                          <MACHINE-REF DEST="MACHINE">/xAAP/UCMS/BT/Machine</MACHINE-REF>
+                          <PROCESS-REF DEST="PROCESS">/xAAP/UCMS/BT/Processes/crypto_daemon</PROCESS-REF>
+                        </PROCESS-TO-MACHINE-MAPPING>
+                        <PROCESS-TO-MACHINE-MAPPING>
+                          <SHORT-NAME>ucm_pkgmanager_Machine_Mapping</SHORT-NAME>
+                          <MACHINE-REF DEST="MACHINE">/xAAP/UCMS/BT/Machine</MACHINE-REF>
+                          <PROCESS-REF DEST="PROCESS">/xAAP/UCMS/BT/Processes/ucm_pkgmanager</PROCESS-REF>
+                        </PROCESS-TO-MACHINE-MAPPING>
+                      </PROCESS-TO-MACHINE-MAPPINGS>
+                    </PROCESS-TO-MACHINE-MAPPING-SET>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

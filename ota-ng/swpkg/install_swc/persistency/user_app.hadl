@@ -1,0 +1,19 @@
+import AUTOSAR.StdTypes.string
+import xAAP.UCMS.BT.Persistency.AppDesign.Interfaces.iKeyValueStorage
+
+package xAAP.UCMS.BT.Persistency.AppDesign.SWComponent{
+	component user_app_component {
+		require KeyValueStorage for iKeyValueStorage{
+			app_id = "swc2"
+		}
+	}
+}
+
+package xAAP.UCMS.BT.Persistency.AppDesign.Interfaces.iKeyValueStorage {
+	interface<PerKeyValueStorage> iKeyValueStorage {
+		minimumSustainedSize = 64
+		redundancy = NONE
+		updateStrategy = KEEP_EXISTING
+		dataElement app_id of string = { updateStrategy = OVERWRITE }
+	}
+}

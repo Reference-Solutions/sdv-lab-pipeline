@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>xAAP</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>UCMS</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>BT</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE>
+                  <SHORT-NAME>SoftwareClusters</SHORT-NAME>
+                  <ELEMENTS>
+                    <SOFTWARE-CLUSTER>
+                      <SHORT-NAME>__APP_NAME__</SHORT-NAME>
+                      <CATEGORY>APPLICATION_LAYER</CATEGORY>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="xAAP">
+                            <SDG-CAPTION>
+                              <SHORT-NAME>xAAP_0</SHORT-NAME>
+                            </SDG-CAPTION>
+                            <SDG GID="UCMS">
+                              <SDG-CAPTION>
+                                <SHORT-NAME>UCMS_0</SHORT-NAME>
+                              </SDG-CAPTION>
+                              <SDG GID="Artefacts">
+                                <SDG-CAPTION>
+                                  <SHORT-NAME>Artefacts_0</SHORT-NAME>
+                                </SDG-CAPTION>
+                                <SDG GID="Artefact">
+                                  <SDG-CAPTION>
+                                    <SHORT-NAME>Artefact_0</SHORT-NAME>
+                                  </SDG-CAPTION>
+                                  <SD GID="compressed_size">0</SD>
+                                  <SD GID="uncompressed_size">0</SD>
+                                  <SD GID="archive_type">Tar</SD>
+                                  <SD GID="compression_type">None</SD>
+                                  <SD GID="update_type">Application</SD>
+                                  <SD GID="root_path">/opt/vrte/user_app</SD>
+                                  <SD GID="name">__APP_NAME__</SD>
+                                </SDG>
+                              </SDG>
+                            </SDG>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <CLAIMED-FUNCTION-GROUP-REFS>
+                        <CLAIMED-FUNCTION-GROUP-REF DEST="MODE-DECLARATION-GROUP-PROTOTYPE">/xAAP/UCMS/BT/FunctionGroupSet/FunctionGroupSet/DefaultFG</CLAIMED-FUNCTION-GROUP-REF>
+                      </CLAIMED-FUNCTION-GROUP-REFS>
+                      <CONTAINED-PROCESS-REFS>
+                        <CONTAINED-PROCESS-REF DEST="PROCESS">/xAAP/UCMS/BT/Processes/swp_user_app_1_random_data</CONTAINED-PROCESS-REF>
+                      </CONTAINED-PROCESS-REFS>
+                      <LICENSE-REFS>
+                        <LICENSE-REF DEST="DOCUMENTATION">/xAAP/UCMS/BT/SoftwareClusters/License</LICENSE-REF>
+                      </LICENSE-REFS>
+                      <RELEASE-NOTES-REF DEST="DOCUMENTATION">/xAAP/UCMS/BT/SoftwareClusters/ReleaseNotes</RELEASE-NOTES-REF>
+                      <TYPE-APPROVAL>India</TYPE-APPROVAL>
+                      <VENDOR-ID>11</VENDOR-ID>
+                      <VERSION>__APP_VERSION__</VERSION>
+                    </SOFTWARE-CLUSTER>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

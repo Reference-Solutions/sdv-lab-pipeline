@@ -1,0 +1,26 @@
+{
+    "container_format": "0x0106",
+    "update_manifest_data": "testdata/manifest/upd__SoftwarePackage_flatcfg.json",
+    "update_manifest_schema": "testdata/manifest/upd_flatcfg.fbs",
+    "artefacts": [
+        {
+            "value": "testdata/detdet/xaap",
+            "method": "wh"
+        },
+        {
+            "value": "testdata/detdet/abs_application",
+            "method": "ch"
+        },
+        {
+            "value": "testdata/detdet/pressure_sensor",
+            "method": "ch"
+        }
+    ],
+    "compress": "zlib",
+    "key_store": "keys/",
+    "block_size": 6000,
+    "verification": "On",
+    "output": "testdata/swpkg.bin",
+    "estimated_speed": 125,
+    "flatc_path": ""
+}

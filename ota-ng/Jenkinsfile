@@ -1,0 +1,3 @@
+@Library('RefSolutions-Pipeliner@feature/ota-ng-sw-package') _ // Load the my-nested-library as a shared library
+
+execOtaNgPipeline()

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>xAAP</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>UCMS</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>BT</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE>
+                  <SHORT-NAME>ModeDeclarationGroups</SHORT-NAME>
+                  <ELEMENTS>
+                    <MODE-DECLARATION-GROUP>
+                      <SHORT-NAME>DefaultFG</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="RB:VRTE">
+                            <SDG GID="STM">
+                              <SDF GID="FGStateInterfaceAvailable">
+                                <VALUE>1</VALUE>
+                              </SDF>
+                              <SDG GID="recoveryActions">
+                                <SD GID="errCodeToState">1,Off</SD>
+                                <SD GID="errCodeToState">2,Off</SD>
+                                <SD GID="errCodeToState">3,Off</SD>
+                                <SD GID="errCodeToState">4,Off</SD>
+                                <SD GID="errCodeToState">5,Off</SD>
+                                <SD GID="errCodeToState">6,Off</SD>
+                                <SD GID="errCodeToState">7,Off</SD>
+                                <SD GID="errCodeToState">8,Off</SD>
+                                <SD GID="errCodeToState">9,Off</SD>
+                                <SD GID="errCodeToState">10,Off</SD>
+                                <SD GID="errCodeToState">11,Off</SD>
+                                <SD GID="errCodeToState">12,Off</SD>
+                                <SD GID="errCodeToState">13,Off</SD>
+                              </SDG>
+                            </SDG>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <INITIAL-MODE-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/DefaultFG/Off</INITIAL-MODE-REF>
+                      <MODE-DECLARATIONS>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>Off</SHORT-NAME>
+                        </MODE-DECLARATION>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>On</SHORT-NAME>
+                        </MODE-DECLARATION>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>Calibrate</SHORT-NAME>
+                        </MODE-DECLARATION>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>Verify</SHORT-NAME>
+                        </MODE-DECLARATION>
+                      </MODE-DECLARATIONS>
+                    </MODE-DECLARATION-GROUP>
+                    <MODE-DECLARATION-GROUP>
+                      <SHORT-NAME>MachineFG</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="RB:VRTE">
+                            <SDG GID="STM">
+                              <SDF GID="FGStateInterfaceAvailable">
+                                <VALUE>1</VALUE>
+                              </SDF>
+                            </SDG>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <INITIAL-MODE-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/MachineFG/Off</INITIAL-MODE-REF>
+                      <MODE-DECLARATIONS>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>Off</SHORT-NAME>
+                        </MODE-DECLARATION>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>Restart</SHORT-NAME>
+                        </MODE-DECLARATION>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>Shutdown</SHORT-NAME>
+                        </MODE-DECLARATION>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>Startup</SHORT-NAME>
+                        </MODE-DECLARATION>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>ShutdownOS</SHORT-NAME>
+                        </MODE-DECLARATION>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>RestartOS</SHORT-NAME>
+                        </MODE-DECLARATION>
+                      </MODE-DECLARATIONS>
+                    </MODE-DECLARATION-GROUP>
+                    <MODE-DECLARATION-GROUP>
+                      <SHORT-NAME>PlatformFG</SHORT-NAME>
+                      <ADMIN-DATA>
+                        <SDGS>
+                          <SDG GID="RB:VRTE">
+                            <SDG GID="STM">
+                              <SDG GID="recoveryActions">
+                                <SD GID="errCodeToState">1,Off</SD>
+                                <SD GID="errCodeToState">2,Off</SD>
+                                <SD GID="errCodeToState">3,Off</SD>
+                                <SD GID="errCodeToState">4,Off</SD>
+                                <SD GID="errCodeToState">5,Off</SD>
+                                <SD GID="errCodeToState">6,Off</SD>
+                                <SD GID="errCodeToState">7,Off</SD>
+                                <SD GID="errCodeToState">8,Off</SD>
+                                <SD GID="errCodeToState">9,Off</SD>
+                                <SD GID="errCodeToState">10,Off</SD>
+                                <SD GID="errCodeToState">11,Off</SD>
+                                <SD GID="errCodeToState">12,Off</SD>
+                                <SD GID="errCodeToState">13,Off</SD>
+                              </SDG>
+                            </SDG>
+                          </SDG>
+                        </SDGS>
+                      </ADMIN-DATA>
+                      <INITIAL-MODE-REF DEST="MODE-DECLARATION">/xAAP/UCMS/BT/ModeDeclarationGroups/PlatformFG/Off</INITIAL-MODE-REF>
+                      <MODE-DECLARATIONS>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>Off</SHORT-NAME>
+                        </MODE-DECLARATION>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>On</SHORT-NAME>
+                        </MODE-DECLARATION>
+                        <MODE-DECLARATION>
+                          <SHORT-NAME>Verify</SHORT-NAME>
+                        </MODE-DECLARATION>
+                      </MODE-DECLARATIONS>
+                    </MODE-DECLARATION-GROUP>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+                <AR-PACKAGE>
+                  <SHORT-NAME>FunctionGroupSet</SHORT-NAME>
+                  <ELEMENTS>
+                    <FUNCTION-GROUP-SET>
+                      <SHORT-NAME>FunctionGroupSet</SHORT-NAME>
+                      <FUNCTION-GROUPS>
+                        <MODE-DECLARATION-GROUP-PROTOTYPE>
+                          <SHORT-NAME>DefaultFG</SHORT-NAME>
+                          <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/xAAP/UCMS/BT/ModeDeclarationGroups/DefaultFG</TYPE-TREF>
+                        </MODE-DECLARATION-GROUP-PROTOTYPE>
+                        <MODE-DECLARATION-GROUP-PROTOTYPE>
+                          <SHORT-NAME>MachineFG</SHORT-NAME>
+                          <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/xAAP/UCMS/BT/ModeDeclarationGroups/MachineFG</TYPE-TREF>
+                        </MODE-DECLARATION-GROUP-PROTOTYPE>
+                        <MODE-DECLARATION-GROUP-PROTOTYPE>
+                          <SHORT-NAME>PlatformFG</SHORT-NAME>
+                          <TYPE-TREF DEST="MODE-DECLARATION-GROUP">/xAAP/UCMS/BT/ModeDeclarationGroups/PlatformFG</TYPE-TREF>
+                        </MODE-DECLARATION-GROUP-PROTOTYPE>
+                      </FUNCTION-GROUPS>
+                    </FUNCTION-GROUP-SET>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

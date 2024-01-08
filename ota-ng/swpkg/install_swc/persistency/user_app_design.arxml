@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>xAAP</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>UCMS</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>BT</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE>
+                  <SHORT-NAME>Persistency</SHORT-NAME>
+                  <AR-PACKAGES>
+                    <AR-PACKAGE>
+                      <SHORT-NAME>AppDesign</SHORT-NAME>
+                      <AR-PACKAGES>
+                        <AR-PACKAGE>
+                          <SHORT-NAME>SWComponent</SHORT-NAME>
+                          <ELEMENTS>
+                            <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+                              <SHORT-NAME>user_app_component</SHORT-NAME>
+                              <PORTS>
+                                <R-PORT-PROTOTYPE>
+                                  <SHORT-NAME>KeyValueStorage</SHORT-NAME>
+                                  <REQUIRED-COM-SPECS>
+                                    <PERSISTENCY-DATA-REQUIRED-COM-SPEC>
+                                      <DATA-ELEMENT-REF DEST="PERSISTENCY-DATA-ELEMENT">/xAAP/UCMS/BT/Persistency/AppDesign/Interfaces/iKeyValueStorage/iKeyValueStorage/app_id</DATA-ELEMENT-REF>
+                                      <INIT-VALUE>
+                                        <TEXT-VALUE-SPECIFICATION>
+                                          <VALUE>swc2</VALUE>
+                                        </TEXT-VALUE-SPECIFICATION>
+                                      </INIT-VALUE>
+                                    </PERSISTENCY-DATA-REQUIRED-COM-SPEC>
+                                  </REQUIRED-COM-SPECS>
+                                  <REQUIRED-INTERFACE-TREF DEST="PERSISTENCY-KEY-VALUE-STORAGE-INTERFACE">/xAAP/UCMS/BT/Persistency/AppDesign/Interfaces/iKeyValueStorage/iKeyValueStorage</REQUIRED-INTERFACE-TREF>
+                                </R-PORT-PROTOTYPE>
+                              </PORTS>
+                            </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+                          </ELEMENTS>
+                        </AR-PACKAGE>
+                        <AR-PACKAGE>
+                          <SHORT-NAME>Interfaces</SHORT-NAME>
+                          <AR-PACKAGES>
+                            <AR-PACKAGE>
+                              <SHORT-NAME>iKeyValueStorage</SHORT-NAME>
+                              <ELEMENTS>
+                                <PERSISTENCY-KEY-VALUE-STORAGE-INTERFACE>
+                                  <SHORT-NAME>iKeyValueStorage</SHORT-NAME>
+                                  <MINIMUM-SUSTAINED-SIZE>64</MINIMUM-SUSTAINED-SIZE>
+                                  <REDUNDANCY>NONE</REDUNDANCY>
+                                  <UPDATE-STRATEGY>KEEP-EXISTING</UPDATE-STRATEGY>
+                                  <DATA-ELEMENTS>
+                                    <PERSISTENCY-DATA-ELEMENT>
+                                      <SHORT-NAME>app_id</SHORT-NAME>
+                                      <TYPE-TREF DEST="STD-CPP-IMPLEMENTATION-DATA-TYPE">/AUTOSAR/StdTypes/string</TYPE-TREF>
+                                      <UPDATE-STRATEGY>OVERWRITE</UPDATE-STRATEGY>
+                                    </PERSISTENCY-DATA-ELEMENT>
+                                  </DATA-ELEMENTS>
+                                </PERSISTENCY-KEY-VALUE-STORAGE-INTERFACE>
+                              </ELEMENTS>
+                            </AR-PACKAGE>
+                          </AR-PACKAGES>
+                        </AR-PACKAGE>
+                      </AR-PACKAGES>
+                    </AR-PACKAGE>
+                  </AR-PACKAGES>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>

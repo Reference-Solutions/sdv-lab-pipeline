@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 AUTOSAR_00050.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE>
+      <SHORT-NAME>xAAP</SHORT-NAME>
+      <AR-PACKAGES>
+        <AR-PACKAGE>
+          <SHORT-NAME>UCMS</SHORT-NAME>
+          <AR-PACKAGES>
+            <AR-PACKAGE>
+              <SHORT-NAME>BT</SHORT-NAME>
+              <AR-PACKAGES>
+                <AR-PACKAGE>
+                  <SHORT-NAME>Crypto</SHORT-NAME>
+                  <ELEMENTS>
+                    <ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+                      <SHORT-NAME>SWComponentUCMS</SHORT-NAME>
+                      <PORTS>
+                        <R-PORT-PROTOTYPE>
+                          <SHORT-NAME>RPortCryptoProvider</SHORT-NAME>
+                          <REQUIRED-INTERFACE-TREF DEST="CRYPTO-PROVIDER-INTERFACE">/xAAP/UCMS/BT/Crypto/CryptoProviderInterface</REQUIRED-INTERFACE-TREF>
+                        </R-PORT-PROTOTYPE>
+                      </PORTS>
+                    </ADAPTIVE-APPLICATION-SW-COMPONENT-TYPE>
+                    <CRYPTO-PROVIDER-INTERFACE>
+                      <SHORT-NAME>CryptoProviderInterface</SHORT-NAME>
+                      <IS-SERVICE>true</IS-SERVICE>
+                      <SERVICE-KIND>CRYPTO-SERVICE-MANAGER</SERVICE-KIND>
+                    </CRYPTO-PROVIDER-INTERFACE>
+                    <CRYPTO-PROVIDER-TO-PORT-PROTOTYPE-MAPPING>
+                      <SHORT-NAME>CryptoProviderToPortPrototypeMapping</SHORT-NAME>
+                      <CRYPTO-PROVIDER-REF DEST="CRYPTO-PROVIDER">/xAAP/UCMS/BT/Machine/CryptoModuleInstantiation/WOLFCRYPT_PROVIDER</CRYPTO-PROVIDER-REF>
+                      <PROCESS-REF DEST="PROCESS">/xAAP/UCMS/BT/Processes/ucm_pkgmanager</PROCESS-REF>
+                    </CRYPTO-PROVIDER-TO-PORT-PROTOTYPE-MAPPING>
+                  </ELEMENTS>
+                </AR-PACKAGE>
+              </AR-PACKAGES>
+            </AR-PACKAGE>
+          </AR-PACKAGES>
+        </AR-PACKAGE>
+      </AR-PACKAGES>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
