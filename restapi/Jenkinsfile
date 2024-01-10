@@ -1,0 +1,5 @@
+// Jenkinsfile demo
+@Library('ref-solution-pipeliner@restapi') _ // Load the my-nested-library as a shared library
+
+
+execRestApi()
