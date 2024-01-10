@@ -1,0 +1,73 @@
+{
+	"estimatedDurationOfCampaign": 13493.00,
+	"minimumSupportedUcmMasterVersion": "4.0.0.1234565",
+	"maximumSupportedUcmMasterVersion": "4.0.0_vendor specific;13",
+	"ucm": [
+		"1"
+	],
+	"driverNotification": [
+		{
+			"approvalRequired": true,
+			"notificationState": "activate"
+		},
+		{
+			"approvalRequired": true,
+			"notificationState": "cancel"
+		},
+		{
+			"approvalRequired": true,
+			"notificationState": "finish"
+		},
+		{
+			"approvalRequired": true,
+			"notificationState": "process"
+		},
+		{
+			"approvalRequired": true,
+			"notificationState": "rollBack"
+		},
+		{
+			"approvalRequired": true,
+			"notificationState": "transfer"
+		}
+	],
+	"ucmMasterFallback": [
+		"UCM_MASTER_FALLBACK_ID_1",
+		"UCM_MASTER_FALLBACK_ID_2",
+		"UCM_MASTER_FALLBACK_ID_3",
+		"UCM_MASTER_FALLBACK_ID_4"
+	],
+	"rolloutQualification": [
+		{
+			"safetyPolicy": ["none", "car_parked", "windows_up"],
+			"ucmProcessing": [
+				{
+					"ucm": "1",
+					"softwarePackageStep": [
+						{
+							"activationSwitch": false,
+							"process": "",
+							"transfer": [
+								{
+									"storing": "none",
+									"softwarePackage": [
+										{
+											"name": "app_1",
+											"size": "__SW_PACKAGE_SIZE__"
+										}
+									]
+								}
+							]
+						},
+						{
+							"activationSwitch": true,
+							"process": "app_1",
+							"transfer": []
+						}
+					]
+				}
+			]
+		}
+	]
+}
+
