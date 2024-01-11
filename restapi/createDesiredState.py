@@ -58,6 +58,7 @@ class createDesiredState:
             add_help=False) 
 
         parser.add_argument('secret', help="Access token for otaNG API.")
+        parser.add_argument('clientID,'help="Technical user for otaNG API")
         parser.add_argument('-v', '--version', action='version',
                             version=self.toolVersion, help="Show version number of createDesiredState.py and exit.")
         parser.add_argument('-h', '--help', action='help', default=argparse.SUPPRESS,
