@@ -147,7 +147,7 @@ class createDesiredState:
     def createNewAccessToken(self):    
 
         proxies_value = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' : 'http://rb-proxy-de.bosch.com:8080' }
-        response = requests.post(url = 'https://p2.authz.bosch.com/auth/realms/EU_RB_FLEATEST/protocol/openid-connect/token', data = {"grant_type": 'client_credentials'}, auth = ('tech-client-03', 'xMTjYq7Prp2vIETEHYZ4eG6bOUIXIOBD') , proxies=proxies_value)
+        response = requests.post(url = 'https://p2.authz.bosch.com/auth/realms/EU_RB_FLEATEST/protocol/openid-connect/token', data = {"grant_type": 'client_credentials'}, auth = ('tech-client-03', self.secret) , proxies=proxies_value)
         self.token = ""
         output = response.json()
 
