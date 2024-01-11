@@ -188,11 +188,7 @@ class PANTARIS_APIS:
         _deviceId = deviceId
         # The size of the page to be returned- we limited to 20 - as at max six devices are available for now to get info for
         _params = { 'page': '0' , 'size': '20' , 'query': 'deviceId==*{}*'.format(_deviceId)}
-        #In case if no proxy required for example runner is running on private personal machine for qemu
-        if "A10001-ec" in _deviceId:
-           response = requests.get(url=_url, params=_params ,  headers=_headers )
-        else:
-           response = requests.get(url=_url, params=_params ,  headers=_headers , proxies=_proxies )
+        response = requests.get(url=_url, params=_params ,  headers=_headers , proxies=_proxies )
         print("Get_Device_List : HTTP response status code : ", response.status_code)
         if response.status_code != 200  :
             print("Task-Error: Device list failure\n\t*")
@@ -208,7 +204,7 @@ class PANTARIS_APIS:
               #formatted_str = device['deviceId'] + ':'+ device['onlineStatus']['state'] + '\n'
               #outfile.write(formatted_str)
               online_info[device['deviceId']] = device['onlineStatus']['state']
-              #print(online_info) 
+              print(online_info) 
             if len(online_info) == 0:
                online_info = {key: value}
             # Creating json file which has "device online info" - cna be used in robot tests for online device availibility   
