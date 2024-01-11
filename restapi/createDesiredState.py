@@ -18,7 +18,8 @@ class createDesiredState:
         devices.
         """
 
-    secret = ""                         # secret to do requests at otaNG restful API                 
+    secret = ""                         # secret to do requests at otaNG restful API         
+    clientId = ""        
     blobId = "NA"                       # ID of the uploaded blob (needed for desiredState)
     selfUpdateVersion = "NA"            # SW version string of the update-bundle 
     file2Upload = "NA"                  # filename (incl. path) to the update-bundle to be uploaded to cloud
@@ -71,6 +72,9 @@ class createDesiredState:
         if (self.secret == "NA"):
             print(Fore.RED + "Exit due to missing secret!" + Fore.WHITE)
             sys.exit()
+        self.clientId = sys.argv[2]
+        if (self.clientId == "NA"):
+            print(Fore.RED + "Exit due to missing clientId!" + Fore.WHITE)  
 
 
 
@@ -163,44 +167,6 @@ class createDesiredState:
 
         print(Fore.GREEN + "Send url for 'Create New Access Token' done successfully" + Fore.WHITE)
 
-
-
-
-
-
-    # def createNewAccessToken(self):
-    #     """Create access token to use otaNG restful API 
-    #        (needs secret)."""
-
-    #     reqURL = "https://p2.authz.bosch.com/auth/realms/EU_RB_FLEATEST/protocol/openid-connect/token"
-    #     curl_command = ['curl', '-X', 
-    #                     'POST', '' + reqURL,
-    #                     '-H', 'accept: */*',
-    #                     '-H', 'Authorization: Basic dGVjaC1jbGllbnQtMDE6SU5MSXhvWmowTTJXMHQxcWdNYmNFY0RtSTZMYXdXNWQ=',
-    #                     '-H', 'Content-Type: application/x-www-form-urlencoded',
-    #                     '-d', 'grant_type=client_credentials&client_id=tech-client-03&client_secret=' + self.secret
-    #                 ]
-    #     self.token = "" # holds token needed for all further request
-    #     try:
-    #         print("\n" + Fore.BLUE + "Create New Access Token\n" + Fore.WHITE)
-    #         process = subprocess.run(curl_command, capture_output=True) 
-    #         output = process.stdout.decode()
-    #         if (self.verbosity == True):
-    #             print("\treceived body: " + Fore.BLUE + output + Fore.WHITE)
-
-    #         # print received data
-    #         userdata = json.loads(output)
-    #         for item in userdata:
-    #             print("\t" + item.ljust(15) + ": \t" + str(userdata[item]))
-
-    #         # assemble token (needed for further requests)
-    #         access_token = userdata["access_token"]
-    #         token_type = userdata["token_type"]
-    #         self.token = token_type + " " +  access_token
-
-    #         print(Fore.GREEN + "Send url for 'Create New Access Token' done successfully" + Fore.WHITE)
-    #     except:
-    #         print(Fore.RED + "Send url for 'Create New Access Token' failed" + Fore.WHITE)
 
 
     ###########################################
