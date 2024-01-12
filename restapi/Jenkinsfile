@@ -1,5 +1,5 @@
 // Jenkinsfile demo
-@Library('ref-solution-pipeliner@restapi') _ // Load the my-nested-library as a shared library
+@Library('ref-solution-pipeliner@feature/18656-resapi') _ // Load the my-nested-library as a shared library
 
 //env.pip_create_blob_and_desiredstate = "true"
 env.pip_verify_device_with_Id = "true"
