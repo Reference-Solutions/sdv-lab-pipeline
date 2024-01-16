@@ -41,7 +41,7 @@
                                   <SD GID="sync_io">false</SD>
                                   <SD GID="align_io">false</SD>
                                   <SD GID="erase">false</SD>
-                                  <SD GID="size">419430400</SD>
+                                  <SD GID="size">2228224</SD>
                                   <SD GID="block_size">512</SD>
                                   <SD GID="erase_size">512</SD>
                                   <SD GID="address">0x00000000</SD>
@@ -55,9 +55,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">0</SD>
-                                      <SD GID="max_size">20971520</SD>
+                                      <SD GID="max_size">131072</SD>
                                       <SD GID="offset">0x00000000</SD>
-                                      <SD GID="swc_group">install_swc_img</SD>
+                                      <SD GID="swc_group">install_swc</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -65,9 +65,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">1</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x01400000</SD>
-                                      <SD GID="swc_group">install_revert_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x00020000</SD>
+                                      <SD GID="swc_group">install_revert</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -75,9 +75,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">2</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x02800000</SD>
-                                      <SD GID="swc_group">install_rollback_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x00040000</SD>
+                                      <SD GID="swc_group">install_rollback</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -85,9 +85,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">3</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x03C00000</SD>
-                                      <SD GID="swc_group">fail_rollback_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x00060000</SD>
+                                      <SD GID="swc_group">install_frollback</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -95,9 +95,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">4</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x05000000</SD>
-                                      <SD GID="swc_group">remove_swc_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x00080000</SD>
+                                      <SD GID="swc_group">remove_swc</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -105,9 +105,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">5</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x06400000</SD>
-                                      <SD GID="swc_group">remove_revert_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x000A0000</SD>
+                                      <SD GID="swc_group">remove_revert</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -115,9 +115,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">6</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x07800000</SD>
-                                      <SD GID="swc_group">swc_1_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x000C0000</SD>
+                                      <SD GID="swc_group">swc_1</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -125,9 +125,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">7</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x08C00000</SD>
-                                      <SD GID="swc_group">remove_rollback_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x000E0000</SD>
+                                      <SD GID="swc_group">remove_rollback</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -135,9 +135,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">8</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x0A000000</SD>
-                                      <SD GID="swc_group">remove_fail_rollback_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x00100000</SD>
+                                      <SD GID="swc_group">remove_frollback</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -145,9 +145,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">9</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x0B400000</SD>
-                                      <SD GID="swc_group">get_history_install_pkg_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x00120000</SD>
+                                      <SD GID="swc_group">install_EX2</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -155,9 +155,9 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">10</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x0C800000</SD>
-                                      <SD GID="swc_group">get_history_install_pkg2_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x00140000</SD>
+                                      <SD GID="swc_group">install_EX1</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
                                       <SDG-CAPTION>
@@ -165,8 +165,8 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">11</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x0DC00000</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x00160000</SD>
                                       <SD GID="swc_group">update_revert_img</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
@@ -175,8 +175,8 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">12</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x0F000000</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x00180000</SD>
                                       <SD GID="swc_group">update_swc_img</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
@@ -185,8 +185,8 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">13</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x10400000</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x001A0000</SD>
                                       <SD GID="swc_group">install_pkg_img</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
@@ -195,8 +195,8 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">14</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x11800000</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x001C0000</SD>
                                       <SD GID="swc_group">install_pkg2_img</SD>
                                     </SDG>
                                     <SDG GID="MemSlot">
@@ -205,52 +205,20 @@
                                       </SDG-CAPTION>
                                       <SD GID="type">None</SD>
                                       <SD GID="id">15</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x12C00000</SD>
-                                      <SD GID="swc_group">get_history_verify_swc_img</SD>
-                                    </SDG>
-                                    <SDG GID="MemSlot">
-                                      <SDG-CAPTION>
-                                        <SHORT-NAME>MemSlot_16</SHORT-NAME>
-                                      </SDG-CAPTION>
-                                      <SD GID="type">None</SD>
-                                      <SD GID="id">16</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x14000000</SD>
-                                      <SD GID="swc_group">get_history_verify_swc2_img</SD>
-                                    </SDG>
-                                    <SDG GID="MemSlot">
-                                      <SDG-CAPTION>
-                                        <SHORT-NAME>MemSlot_17</SHORT-NAME>
-                                      </SDG-CAPTION>
-                                      <SD GID="type">None</SD>
-                                      <SD GID="id">17</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x15400000</SD>
-                                      <SD GID="swc_group">get_history_verify_swc3_img</SD>
-                                    </SDG>
-                                    <SDG GID="MemSlot">
-                                      <SDG-CAPTION>
-                                        <SHORT-NAME>MemSlot_18</SHORT-NAME>
-                                      </SDG-CAPTION>
-                                      <SD GID="type">None</SD>
-                                      <SD GID="id">18</SD>
-                                      <SD GID="max_size">20971520</SD>
-                                      <SD GID="offset">0x16800000</SD>
-                                      <SD GID="swc_group">get_history_verify_swc4_img</SD>
+                                      <SD GID="max_size">131072</SD>
+                                      <SD GID="offset">0x001E0000</SD>
+                                      <SD GID="swc_group">verify_image</SD>
                                     </SDG>
                                   </SDG>
                                 </SDG>
                               </SDG>
                               <SDG GID="General">
-                                <SD GID="scratch_folder">/opt/vrte/ucm-pkgmanager/data</SD>
+                                <SD GID="scratch_folder">/opt/vrte/ucm-pkgmanager/data/scratch</SD>
                                 <SD GID="swc_db_folder">/opt/vrte/ucm-pkgmanager/data/ucmdb</SD>
                                 <SD GID="fc_stm_enable">true</SD>
                                 <SD GID="fc_crypto_enable">false</SD>
                                 <SD GID="fc_exm_enable">false</SD>
                                 <SD GID="swp_format">false</SD>
-                                <SD GID="transfer_block_size">64512</SD>
-                                <SD GID="initial_update_manifest_folder">/opt/vrte/ucm-pkgmanager/data/manifests</SD>
                               </SDG>
                               <SDG GID="Pipeline">
                                 <SD GID="element_count">32</SD>
@@ -268,7 +236,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">0</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">install_swc_img</SD>
+                                  <SD GID="swc_group">install_swc</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -276,7 +244,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">1</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">install_revert_img</SD>
+                                  <SD GID="swc_group">install_revert</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -284,7 +252,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">2</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">install_rollback_img</SD>
+                                  <SD GID="swc_group">install_rollback</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -292,7 +260,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">3</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">fail_rollback_img</SD>
+                                  <SD GID="swc_group">install_frollback</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -300,7 +268,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">4</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">remove_swc_img</SD>
+                                  <SD GID="swc_group">remove_swc</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -308,7 +276,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">5</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">remove_revert_img</SD>
+                                  <SD GID="swc_group">remove_revert</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -316,7 +284,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">6</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">swc_1_img</SD>
+                                  <SD GID="swc_group">swc_1</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -324,7 +292,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">7</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">remove_rollback_img</SD>
+                                  <SD GID="swc_group">remove_rollback</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -332,7 +300,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">8</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">remove_fail_rollback_img</SD>
+                                  <SD GID="swc_group">remove_frollback</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -340,7 +308,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">9</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">get_history_install_pkg_img</SD>
+                                  <SD GID="swc_group">install_EX2</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -348,7 +316,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">10</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">get_history_install_pkg2_img</SD>
+                                  <SD GID="swc_group">install_EX1</SD>
                                 </SDG>
                                 <SDG GID="Image">
                                   <SDG-CAPTION>
@@ -388,31 +356,7 @@
                                   </SDG-CAPTION>
                                   <SD GID="id">15</SD>
                                   <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">get_history_verify_swc_img</SD>
-                                </SDG>
-                                <SDG GID="Image">
-                                  <SDG-CAPTION>
-                                    <SHORT-NAME>Image_16</SHORT-NAME>
-                                  </SDG-CAPTION>
-                                  <SD GID="id">16</SD>
-                                  <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">get_history_verify_swc2_img</SD>
-                                </SDG>
-                                <SDG GID="Image">
-                                  <SDG-CAPTION>
-                                    <SHORT-NAME>Image_17</SHORT-NAME>
-                                  </SDG-CAPTION>
-                                  <SD GID="id">17</SD>
-                                  <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">get_history_verify_swc3_img</SD>
-                                </SDG>
-                                <SDG GID="Image">
-                                  <SDG-CAPTION>
-                                    <SHORT-NAME>Image_18</SHORT-NAME>
-                                  </SDG-CAPTION>
-                                  <SD GID="id">18</SD>
-                                  <SD GID="mount_ro">true</SD>
-                                  <SD GID="swc_group">get_history_verify_swc4_img</SD>
+                                  <SD GID="swc_group">verify_image</SD>
                                 </SDG>
                               </SDG>
                             </SDG>
@@ -421,7 +365,7 @@
                       </ADMIN-DATA>
                       <IDENTIFIER>1</IDENTIFIER>
                       <MAX-NUMBER-OF-PARALLEL-TRANSFERS>4</MAX-NUMBER-OF-PARALLEL-TRANSFERS>
-                      <UCM-SOFTWARE-VERSION>2.7.0</UCM-SOFTWARE-VERSION>
+                      <UCM-SOFTWARE-VERSION>2.7.0.0</UCM-SOFTWARE-VERSION>
                     </UCM-MODULE-INSTANTIATION>
                     <CRYPTO-MODULE-INSTANTIATION>
                       <SHORT-NAME>CryptoModuleInstantiation</SHORT-NAME>
@@ -432,7 +376,7 @@
                             <SD GID="ipcBufferSize">1216</SD>
                             <SD GID="maxNumberOfThreads">7</SD>
                           </SDG>
-                          <SDG GID="RB:VRTE" />
+                          <SDG GID="RB:VRTE"/>
                         </SDGS>
                       </ADMIN-DATA>
                       <CRYPTO-PROVIDERS>

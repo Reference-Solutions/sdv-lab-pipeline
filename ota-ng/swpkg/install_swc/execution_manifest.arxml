@@ -244,6 +244,12 @@
                         <PROCESS-ARGUMENT>
                           <ARGUMENT>-a</ARGUMENT>
                         </PROCESS-ARGUMENT>
+                        <PROCESS-ARGUMENT>
+                          <ARGUMENT>-x</ARGUMENT>
+                        </PROCESS-ARGUMENT>
+                        <PROCESS-ARGUMENT>
+                          <ARGUMENT>/opt/vrte/ucm-pkgmanager/etc/ucm-pkgmanager.conf</ARGUMENT>
+                        </PROCESS-ARGUMENT>
                       </PROCESS-ARGUMENTS>
                       <SCHEDULING-POLICY>First In First Out</SCHEDULING-POLICY>
                       <SCHEDULING-PRIORITY>1</SCHEDULING-PRIORITY>

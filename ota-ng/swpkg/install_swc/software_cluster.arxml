@@ -40,7 +40,7 @@
                                   <SD GID="compression_type">None</SD>
                                   <SD GID="update_type">Application</SD>
                                   <SD GID="root_path">/opt/vrte/user_app</SD>
-                                  <SD GID="name">__APP_NAME__</SD>
+                                  <SD GID="name">__APP_NAME__.tar</SD>
                                 </SDG>
                               </SDG>
                             </SDG>
