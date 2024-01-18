@@ -97,45 +97,45 @@ class createDesiredState:
         #json_file_path = "./desiredState.json"  # ToDo
 
         # open configuration file
-        config_data = "NA"
-        try:
-            with open(json_file_path, 'r') as j:
-                config_data = json.loads(j.read())
-        except:
-            print(Fore.RED + "Could not open " + json_file_path + "in working directory" + Fore.WHITE)
-            return False
+        # config_data = "NA"
+        # try:
+        #     with open(json_file_path, 'r') as j:
+        #         config_data = json.loads(j.read())
+        # except:
+        #     print(Fore.RED + "Could not open " + json_file_path + "in working directory" + Fore.WHITE)
+        #     return False
 
-        # retrieve values
-        if (config_data != "NA"):
-            try:
-                self.blobId = config_data["blobID"]
-            except KeyError as ke:
-                print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
-            try:
-                self.selfUpdateVersion = config_data["selfUpdateVersion"]
-            except KeyError as ke:
-                print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
-            try:
-                self.file2Upload = config_data["file2Upload"]
-            except KeyError as ke:
-                print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
-            try:
-                self.verbosity = config_data["verbosity"]
-            except KeyError as ke:
-                print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
-            try:
-                self.blobLifeTime = config_data["blobLifeTime"]
-            except KeyError as ke:
-                print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
+        # # retrieve values
+        # if (config_data != "NA"):
+        #     try:
+        #         self.blobId = config_data["blobID"]
+        #     except KeyError as ke:
+        #         print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
+        #     try:
+        #         self.selfUpdateVersion = config_data["selfUpdateVersion"]
+        #     except KeyError as ke:
+        #         print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
+        #     try:
+        #         self.file2Upload = config_data["file2Upload"]
+        #     except KeyError as ke:
+        #         print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
+        #     try:
+        #         self.verbosity = config_data["verbosity"]
+        #     except KeyError as ke:
+        #         print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
+        #     try:
+        #         self.blobLifeTime = config_data["blobLifeTime"]
+        #     except KeyError as ke:
+        #         print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
 
-            # assemble desiredState name
-            self.desiredStateName += self.blobId
+        #     # assemble desiredState name
+        #     self.desiredStateName += self.blobId
  
-        if (self.blobId != "NA" and self.selfUpdateVersion != "NA" and self.file2Upload != "NA" and
-            self.blobId != "" and self.selfUpdateVersion != "" and self.file2Upload != ""):
-            print("\nblobId:  \t\t" + self.blobId + 
+        if (self.blobId1 != "NA" and self.selfUpdateVersion != "NA" and self.file2Upload1 != "NA" and
+            self.blobId2 != "" and self.selfUpdateVersion != "" and self.file2Upload2 != ""):
+            print("\nblobId:  \t\t" + self.blobId1 + 
                   "\nselfUpdateVersion:  \t" + self.selfUpdateVersion + 
-                  "\nfile2Upload:  \t\t" + self.file2Upload +
+                  "\nfile2Upload:  \t\t" + self.file2Upload1 +
                   "\ndesiredStateName:  \t" + self.desiredStateName +
                   "\nblobLifeTime:  \t\t" + str(self.blobLifeTime))
             
