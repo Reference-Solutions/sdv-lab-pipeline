@@ -176,13 +176,13 @@ class PANTARIS_APIS:
         #_proxies = {'http' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name,self.password), 'https' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name, self.password) }
         _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
         _headers = { 'accept' : 'application/json' , 'Authorization' : 'Bearer {}'.format(token)  }
-        _url = self.serverUrl_device
-        #_url = "https://api.devices.eu.bosch-mobility-cloud.com/v2/devices/AADemo3"
+        #_url = self.serverUrl_device
+        _url = "https://api.devices.eu.bosch-mobility-cloud.com/v2/devices/AADemo3"
         _deviceId = deviceId
         # The size of the page to be returned- we limited to 20 - as at max six devices are available for now to get info for
         #_params = { 'page': '0' , 'size': '20' , 'query': 'deviceId==*{}*'.format(_deviceId)}
-        _params = {'query': 'deviceId==*{}*'.format(_deviceId)}
-        response = requests.get(url=_url, params=_params, headers=_headers , proxies=_proxies )
+        #_params = {'query': 'deviceId==*{}*'.format(_deviceId)}
+        response = requests.get(url=_url, headers=_headers , proxies=_proxies )
         print("Get_Device_List : HTTP response status code : ", response.status_code)
         if response.status_code != 200  :
             print("Task-Error: Device list failure\n\t*")
