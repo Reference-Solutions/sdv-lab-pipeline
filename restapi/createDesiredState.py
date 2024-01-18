@@ -24,7 +24,7 @@ class createDesiredState:
     file2Upload = "NA"         
     blobId1 = "kopd_test"
     blobId2 = "kopdd_test"                       # ID of the uploaded blob (needed for desiredState)
-    selfUpdateVersion = "NA"            # SW version string of the update-bundle 
+    selfUpdateVersion = "12.2"            # SW version string of the update-bundle 
     file2Upload1 = "install_swc_app_opd.swpkg"                  # filename (incl. path) to the update-bundle to be uploaded to cloud
     file2Upload2 = "vehiclepkg_install_swc_app_opd.tar"
     blobLifeTime = 60                    # time in days the blob is kept at backend side
@@ -148,7 +148,7 @@ class createDesiredState:
         else:
             print(Fore.RED + "blobId: " + self.blobId + 
                   "\nor selfUpdateVersion: " + self.selfUpdateVersion + 
-                  "\nor file2Upload: " + self.file2Upload + "are not set!" + Fore.WHITE)
+                  "\nor file2Upload: " + self.file2Upload1 + "are not set!" + Fore.WHITE)
             return False
 
 
