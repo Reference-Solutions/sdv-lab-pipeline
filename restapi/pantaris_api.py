@@ -180,9 +180,8 @@ class PANTARIS_APIS:
         'Authorization': f'Bearer {token}',
         'Content-Type': 'application/json' }
         #_url = self.serverUrl_device
-        d_url = "https://api.devices.eu.bosch-mobility-cloud.com/v2/devices/"
-        _url = d_url+ '/' + str(deviceId)
         _deviceId = deviceId
+        _url = "https://api.devices.eu.bosch-mobility-cloud.com/v2/devices/"+ str(_deviceId)
         # The size of the page to be returned- we limited to 20 - as at max six devices are available for now to get info for
         #_params = { 'page': '0' , 'size': '20' , 'query': 'deviceId==*{}*'.format(_deviceId)}
         _params = { 'query': 'deviceId==*{}*'.format(_deviceId)}
