@@ -359,8 +359,8 @@ class createDesiredState:
         body = '{"name": "##name##","specification": {"domains": [{"id": "safety-domain","components": [{"id": "app_1","version": "##version##","config": [{"key": "image","value": "##imageValue1##"}]}],"config": [{"key": "image-opd-app-1","value": "##imageValue2##"}]}],"baselines": [{"components": ["safety-domain:app_1"],"title": "opd-app-1"}]}}'
         body = body.replace("##name##",self.desiredStateName)
         body = body.replace("##version##",self.selfUpdateVersion)
-        body = body.replace("##imageValue##1",imageValue1)
-        body = body.replace("##imageValue##2",imageValue2)
+        body = body.replace("##imageValue1##",imageValue1)
+        body = body.replace("##imageValue2##",imageValue2)
         body = body.replace("\n", "")
 
         if (self.verbosity == True):
