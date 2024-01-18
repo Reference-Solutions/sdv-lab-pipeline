@@ -176,8 +176,8 @@ class PANTARIS_APIS:
         #_proxies = {'http' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name,self.password), 'https' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name, self.password) }
         _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
         _headers = { 'accept' : 'application/json' , 'Authorization' : 'Bearer {}'.format(token)  }
-        #_url = self.serverUrl_device
-        _url = "https://api.devices.eu.bosch-mobility-cloud.com/v2/devices/AADemo3"
+        _url = self.serverUrl_device
+        #_url = "https://api.devices.eu.bosch-mobility-cloud.com/v2/devices/AADemo3"
         _deviceId = deviceId
         # The size of the page to be returned- we limited to 20 - as at max six devices are available for now to get info for
         _params = { 'page': '0' , 'size': '20' , 'query': 'deviceId==*{}*'.format(_deviceId)}
@@ -190,22 +190,25 @@ class PANTARIS_APIS:
             self.sys_exit(response.status_code)
         else: 
             jsonResponse = response.json()
+            json_formatted_str = json.dumps(jsonResponse, indent=2)
+            print(json_formatted_str)
+            print("Task-Finish : Got required device info with sucess")
             #creating empty dictionary to store device online informaiton
-            key = ''
-            value = 'Device not found'
-            online_info = {}
-            for device in jsonResponse['_embedded']['devices'] :
-              #formatted_str = device['deviceId'] + ':'+ device['onlineStatus']['state'] + '\n'
-              #outfile.write(formatted_str)
-              online_info[device['deviceId']] = device['onlineStatus']['state']
-              print(online_info) 
-            if len(online_info) == 0:
-               online_info = {key: value}
-            # Creating json file which has "device online info" - cna be used in robot tests for online device availibility   
-            json_formatted_str = json.dumps(online_info, indent=2)
-            with open("online_info.json", "w") as outfile:
-                outfile.write(json_formatted_str)
-            print("Task-Finish : Successfully getting online device info - json file generated")
+            # key = ''
+            # value = 'Device not found'
+            # online_info = {}
+            # for device in jsonResponse['_embedded']['devices'] :
+            #   #formatted_str = device['deviceId'] + ':'+ device['onlineStatus']['state'] + '\n'
+            #   #outfile.write(formatted_str)
+            #   online_info[device['deviceId']] = device['onlineStatus']['state']
+            #   print(online_info) 
+            # if len(online_info) == 0:
+            #    online_info = {key: value}
+            # # Creating json file which has "device online info" - cna be used in robot tests for online device availibility   
+            # json_formatted_str = json.dumps(online_info, indent=2)
+            # with open("online_info.json", "w") as outfile:
+            #     outfile.write(json_formatted_str)
+            # print("Task-Finish : Successfully getting online device info - json file generated")
 
     def device_token(self, blobId, time_to_live_secs, oneTimePass):
         print("...Fetching access token for device...")
