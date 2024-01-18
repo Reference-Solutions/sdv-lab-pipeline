@@ -3,23 +3,23 @@
 ##############################################################################
 #Script          :  pantaris_api.py
 #Description     :  Script can perform certain API calls defined as per
-#                   https://api.devices.eu.bosch-mobility-cloud.com/api-docs/?urls.primaryName=Cloud%20Store%20%28v3%29#/Blobs%20-%20Version%203/getBlobs
+#                   https://api.vehicles.eu.bosch-mobility-cloud.com/api-docs/?urls.primaryName=Cloud%20Store%20%28v3%29#/Blobs%20-%20Version%203/getBlobs
 #                   Implemeneted command :
 #                        1. Upload_Blob    : Upload blob
 #                        2. Blob_Meta_Info : Get blob meta data
 #                        3. Download_Blob  : Download blob
 #                        4. Delete_Blob    : Delete blob
 #                        5. Blob_Page_Info : Get blobs page by page for tennat
-#                        6. Get_vehicle_list: Get Device online info in json format
-#                        7. Get_Device_Token: Get device token for specific blobID
+#                        6. Get_vehicle_list: Get vehicle online info in json format
+#                        7. Get_vehicle_Token: Get vehicle token for specific blobID
 #                   Use of command :
 #                        ./pantaris_api.py -c Upload_Blob -b_id -ttl -f (specify Blob Id , time-to-live for blob , file to be uploaded )
 #                        ./pantaris_api.py -c Blob_Meta_Info -b_id      (specify Blob Id to get meta info for )
 #                        ./pantaris_api.py -c Download_Blob -b_id -f    (specify Blob Id , Downloaded file will be saved with this name)
 #                        ./pantaris_api.py -c Delete_Blob -b_id         (specify Blob Id to get deleted )
 #                        ./pantaris_api.py -c Blob_Page_Info -p -p_s    (specify page and page size))
-#                        ./pantaris_api.py -c Get_vehicle_list -v_id      (specify device ID(filter) to get device info for )
-#                        ./pantaris_api.py -c Get_Device_Token -b_id -ttls -otp  (specify Blob Id , time-to-live for token , token use onetime/multiple )
+#                        ./pantaris_api.py -c Get_vehicle_list -v_id      (specify vehicle ID(filter) to get vehicle info for )
+#                        ./pantaris_api.py -c Get_vehicle_Token -b_id -ttls -otp  (specify Blob Id , time-to-live for token , token use onetime/multiple )
 #                   Exit code:
 #                         Following exit code emitted incase of specified status code repsonses.
 #                         (As exit code only possible in the range of 0-255.)
@@ -47,11 +47,11 @@ class PANTARIS_APIS:
         self.user_name = ""
         self.password = ""
         self.baseUrl = "https://p2.authz.bosch.com"
-        self.serverUrl = "https://api.devices.eu.bosch-mobility-cloud.com/v3/blobs"
-        # Using "device managemnet" endpoint
-        self.serverUrl_device = "https://api.devices.eu.bosch-mobility-cloud.com/v2beta/devices"
+        self.serverUrl = "https://api.vehicles.eu.bosch-mobility-cloud.com/v3/blobs"
+        # Using "vehicle managemnet" endpoint
+        self.serverUrl_vehicle = "https://api.vehicles.eu.bosch-mobility-cloud.com/v2beta/vehicles"
         # Using "cloud store" endpoint
-        self.serverUrl_device_blobs = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs"
+        self.serverUrl_vehicle_blobs = "https://api.vehicles.eu.bosch-mobility-cloud.com/v3/vehicle/blobs"
         self.realm = "EU_RB_FLEATEST"
         self.accessTokenUrl = self.baseUrl + "/auth/realms/" + self.realm + "/protocol/openid-connect/token"
         self.scope = "openid"
@@ -80,7 +80,7 @@ class PANTARIS_APIS:
     
 
     def vehicle_list(self , vehicleId):
-        print("Task : Getting online device list...")
+        print("Task : Getting online vehicle list...")
         token = self.get_access_token(vehicleId)
         #_proxies = {'http' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name,self.password), 'https' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name, self.password) }
         _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
@@ -88,44 +88,44 @@ class PANTARIS_APIS:
         _headers = {
         'Authorization': f'Bearer {token}',
         'Content-Type': 'application/json' }
-        #_url = self.serverUrl_device
+        #_url = self.serverUrl_vehicle
         _vehicleId = vehicleId
-        _url = "https://api.devices.eu.bosch-mobility-cloud.com/v2/devices/"+ str(_vehicleId)
-        # The size of the page to be returned- we limited to 20 - as at max six devices are available for now to get info for
+        _url = "https://rc.ota.eu.bosch-mobility-cloud.com/api/applications/fleet-management/vehicles/"+ str(_vehicleId)
+        # The size of the page to be returned- we limited to 20 - as at max six vehicles are available for now to get info for
         #_params = { 'page': '0' , 'size': '20' , 'query': 'vehicleId==*{}*'.format(_vehicleId)}
         _params = { 'query': 'vehicleId==*{}*'.format(_vehicleId)}
         response = requests.get(url=_url, headers=_headers , proxies=_proxies )
         print("Get_vehicle_list : HTTP response status code : ", response.status_code)
         if response.status_code != 200  :
-            print("Task-Error: Device list failure\n\t*")
+            print("Task-Error: vehicle list failure\n\t*")
             print("HTTP", response.status_code)
-            print("Device not found , hence creating new device")
+            print("vehicle not found , hence creating new vehicle")
             #self.sys_exit(response.status_code)
         else: 
             jsonResponse = response.json()
             json_formatted_str = json.dumps(jsonResponse, indent=2)
             print(json_formatted_str)
-            print("Task-Finish : Got required device info with sucess")
-            #creating empty dictionary to store device online informaiton
+            print("Task-Finish : Got required vehicle info with sucess")
+            #creating empty dictionary to store vehicle online informaiton
             # key = ''
-            # value = 'Device not found'
+            # value = 'vehicle not found'
             # online_info = {}
-            # for device in jsonResponse['_embedded']['devices'] :
-            #   #formatted_str = device['vehicleId'] + ':'+ device['onlineStatus']['state'] + '\n'
+            # for vehicle in jsonResponse['_embedded']['vehicles'] :
+            #   #formatted_str = vehicle['vehicleId'] + ':'+ vehicle['onlineStatus']['state'] + '\n'
             #   #outfile.write(formatted_str)
-            #   online_info[device['vehicleId']] = device['onlineStatus']['state']
+            #   online_info[vehicle['vehicleId']] = vehicle['onlineStatus']['state']
             #   print(online_info) 
             # if len(online_info) == 0:
             #    online_info = {key: value}
-            # # Creating json file which has "device online info" - cna be used in robot tests for online device availibility   
+            # # Creating json file which has "vehicle online info" - cna be used in robot tests for online vehicle availibility   
             # json_formatted_str = json.dumps(online_info, indent=2)
             # with open("online_info.json", "w") as outfile:
             #     outfile.write(json_formatted_str)
-            # print("Task-Finish : Successfully getting online device info - json file generated")
+            # print("Task-Finish : Successfully getting online vehicle info - json file generated")
       
 
-    def device_token(self, blobId, time_to_live_secs, oneTimePass):
-        print("...Fetching access token for device...")
+    def vehicle_token(self, blobId, time_to_live_secs, oneTimePass):
+        print("...Fetching access token for vehicle...")
         token = self.get_access_token(blobId)
         #print(token)
         #Providing user credentials - Proxy Authentication Required - Getting from workflow secrets
@@ -139,24 +139,24 @@ class PANTARIS_APIS:
         #In case if no proxy required for example runner is running on private personal machine for qemu
 
         response = requests.post(url=_url,  headers=_headers , proxies=_proxies , json=_data )
-        print("Device Access_token : HTTP  response status code : ", response.status_code)
+        print("vehicle Access_token : HTTP  response status code : ", response.status_code)
         if response.status_code != 200 and response.status_code != 201  :
-            print("# Generating device token Failure\n\t*")
+            print("# Generating vehicle token Failure\n\t*")
             print("HTTP", response.status_code)
             self.sys_exit(response.status_code)
         else:
             jsonResponse = response.json()
-            #creating empty dictionary to store device token , URL and blockID informaiton
+            #creating empty dictionary to store vehicle token , URL and blockID informaiton
             token_info = {}
             token_info["TOKEN_ID"] = jsonResponse["tokenId"]
             #token_info["TOKEN_ID"] = "token will be placed here"
             token_info["BLOB_ID"] = jsonResponse["blobId"]
-            token_info["URL_ID"] = self.serverUrl_device_blobs
+            token_info["URL_ID"] = self.serverUrl_vehicle_blobs
             # Creating json file which has "token info" - can be used in robot tests for sua module  
             json_formatted_str = json.dumps(token_info, indent=2)
             with open("token_info.json", "w") as outfile:
                 outfile.write(json_formatted_str)
-            print("Generated device token with success /n")
+            print("Generated vehicle token with success /n")
     
 
     def sys_exit(self,status_code): 
@@ -196,7 +196,7 @@ def args_menu():
     parser.add_argument('-ttls', '--ttl_secs', type=str, help="Specify time to live seconds for token", required=False , default='60')
     parser.add_argument('-otp', '--onetimeuse', type=str, help="One time use use or multipletime use ", required=False , default='true')
     parser.add_argument('-f', '--f_path', type=str, help="Specify file to upload", required=False , default='xyz.raucb')
-    parser.add_argument('-v_id', '--vehicle_id', type=str, help="Specify device ID to get online info for", required=False , default='owa5x-A11LWA')
+    parser.add_argument('-v_id', '--vehicle_id', type=str, help="Specify vehicle ID to get online info for", required=False , default='owa5x-A11LWA')
     parser.add_argument('-c_id', '--client_id', type=str, help="Specify client ID to authorize on Pantaris", required=False, default='')
     parser.add_argument('-c_s', '--client_secret', type=str, help="Specify client secret to authorize on Pantaris", required=False, default='')
     # parser.add_argument('-u', '--user', type=str, help="Client user name ", required=True)
@@ -236,14 +236,14 @@ def main():
            Pantaris.download_blob(blobId , file_path)
         elif Task == "Get_vehicle_list":
            vehicleId = arg_parsed.vehicle_id
-           #Get device list in json format
+           #Get vehicle list in json format
            Pantaris.vehicle_list(vehicleId)
-        elif Task == "Get_Device_Token":
+        elif Task == "Get_vehicle_Token":
            blobId = arg_parsed.blob_id
            time_to_live_secs = arg_parsed.ttl_secs
            oneTimePass = arg_parsed.onetimeuse
-           # Get device token along with URL and respected Blob ID in json form
-           Pantaris.device_token(blobId, time_to_live_secs, oneTimePass)
+           # Get vehicle token along with URL and respected Blob ID in json form
+           Pantaris.vehicle_token(blobId, time_to_live_secs, oneTimePass)
         elif Task == "Get_Access_Token":
             vehicle_id = arg_parsed.vehicle_id
             Pantaris.get_access_token(vehicle_id)
