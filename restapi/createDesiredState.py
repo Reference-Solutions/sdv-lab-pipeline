@@ -333,7 +333,7 @@ class createDesiredState:
                 cur_color = self.default_color
 
             # retrieve blobID and tokenID (needed to assemble desiredState)
-            if (self.blobId != userdata["blobId"]):
+            if (self.blobId == userdata["blobId"]):
                  print(Fore.YELLOW + "WARNING: Received blobID is different to expected one [" + self.blobId + "]" + Fore.WHITE)
             tokenId = userdata["tokenId"]
             return tokenId
@@ -350,8 +350,8 @@ class createDesiredState:
         """Issue cURL request to retrieve token 
         for blod with ID = blobId."""
 
-        imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.blobId1+"?token="+self.accessToken1
-        imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.blobId2+"?token="+self.accessToken2
+        imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.blobId1+"?token="+token1
+        imageValue2 = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.blobId2+"?token="+token2
         if (self.verbosity == True):
             print("imageValue: " + imageValue)
 
@@ -408,10 +408,10 @@ class createDesiredState:
             self.createNewAccessToken()
             self.uploadBlob(self.blobId1,self.file2Upload1)
             self.getBlobMetadata(self.blobId1)
-            self.accessToken1 = self.createAccessToken(self.blobId1)
+            accessToken1 = self.createAccessToken(self.blobId1)
             self.uploadBlob(self.blobId2,self.file2Upload2)
-            self.accessToken2 = self.createAccessToken(self.blobId2)
-            self.createDesiredState()
+            accessToken2 = self.createAccessToken(self.blobId2)
+            self.createDesiredState(accessToken1,accessToken2)
         else:
             print(Fore.RED + "Exited due to missing parameters!" + Fore.WHITE)
 
