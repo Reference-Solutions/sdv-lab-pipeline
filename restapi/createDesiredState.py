@@ -32,7 +32,7 @@ class createDesiredState:
     tokenId = "NAtokenId" 
     accessToken2 = "NAtokenId"              # tokenID of the uploaded bundle (needed for desiredState)
     accessToken1 = "NAtokenId"
-    desiredStateName = "desiredState_"  # name of the desiredState on the Pantaris backend (needs to be unique)
+    desiredStateName = "newdesiredState_"  # name of the desiredState on the Pantaris backend (needs to be unique)
     default_color = Fore.WHITE
     alert_color = Fore.RED 
 
