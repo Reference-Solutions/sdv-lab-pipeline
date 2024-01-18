@@ -191,7 +191,7 @@ class PANTARIS_APIS:
             print("Task-Error: Device list failure\n\t*")
             print("HTTP", response.status_code)
             print("Device not found , hence creating new device")
-            self.sys_exit(response.status_code)
+            #self.sys_exit(response.status_code)
         else: 
             jsonResponse = response.json()
             json_formatted_str = json.dumps(jsonResponse, indent=2)
