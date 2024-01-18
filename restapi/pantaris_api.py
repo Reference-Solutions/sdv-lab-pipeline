@@ -181,7 +181,7 @@ class PANTARIS_APIS:
         _deviceId = deviceId
         # The size of the page to be returned- we limited to 20 - as at max six devices are available for now to get info for
         _params = { 'page': '0' , 'size': '20' , 'query': 'deviceId==*{}*'.format(_deviceId)}
-        response = requests.get(url=_url, headers=_headers , proxies=_proxies )
+        response = requests.get(url=_url, params=_params headers=_headers , proxies=_proxies )
         print("Get_Device_List : HTTP response status code : ", response.status_code)
         if response.status_code != 200  :
             print("Task-Error: Device list failure\n\t*")
