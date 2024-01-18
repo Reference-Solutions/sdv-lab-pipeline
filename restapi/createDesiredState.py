@@ -19,7 +19,9 @@ class createDesiredState:
         """
 
     secret = ""                         # secret to do requests at otaNG restful API         
-    clientId = ""        
+    clientId = "" 
+    blobId = "NA" 
+    file2Upload = "NA"         
     blobId1 = "kopd_test"
     blobId2 = "kopdd_test"                       # ID of the uploaded blob (needed for desiredState)
     selfUpdateVersion = "NA"            # SW version string of the update-bundle 
