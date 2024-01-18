@@ -135,20 +135,20 @@ class createDesiredState:
             self.blobId2 != "" and self.selfUpdateVersion != "" and self.file2Upload2 != ""):
             print("\nblobId:  \t\t" + self.blobId1 + 
                   "\nselfUpdateVersion:  \t" + self.selfUpdateVersion + 
-                  "\nfile2Upload:  \t\t" + self.file2Upload1 +
+                  "\nfile2Upload1:  \t\t" + self.file2Upload1 +
                   "\ndesiredStateName:  \t" + self.desiredStateName +
                   "\nblobLifeTime:  \t\t" + str(self.blobLifeTime))
             
             # check if file to upload is available
-            if(os.path.isfile(self.file2Upload) == False):
-                print(Fore.RED + "File to upload " + self.file2Upload + " not found in working directory!" + Fore.WHITE)
+            if(os.path.isfile(self.file2Upload1) == False):
+                print(Fore.RED + "File to upload " + self.file2Upload1 + " not found in working directory!" + Fore.WHITE)
                 return False
                 
             return True
         else:
             print(Fore.RED + "blobId: " + self.blobId + 
                   "\nor selfUpdateVersion: " + self.selfUpdateVersion + 
-                  "\nor file2Upload: " + self.file2Upload1 + "are not set!" + Fore.WHITE)
+                  "\nor file2Upload1: " + self.file2Upload1 + "are not set!" + Fore.WHITE)
             return False
 
 
