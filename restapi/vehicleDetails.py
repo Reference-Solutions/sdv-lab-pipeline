@@ -63,11 +63,8 @@ class PANTARIS_APIS:
         #_proxies = {'http' : 'http://127.0.0.1:3128' , 'https' : 'http://127.0.0.1:3128' }
         _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
         #In case if no proxy required for example runner is running on private personal machine for qemu
-        if "qemux86-64" in Id or "A10001-ec" in Id:
-            print("Found Qemu token")
-            response = requests.post(url = self.accessTokenUrl, data = {"grant_type": self.grant_type}, auth = (self.client_id, self.client_secret) )
-        else:
-            response = requests.post(url = self.accessTokenUrl, data = {"grant_type": self.grant_type}, auth = (self.client_id, self.client_secret) , proxies=_proxies )
+    
+        response = requests.post(url = self.accessTokenUrl, data = {"grant_type": self.grant_type}, auth = (self.client_id, self.client_secret) , proxies=_proxies )
         print("Access_token : HTTP  response status code : ", response.status_code)
         if response.status_code != 200 and response.status_code != 201  :
             print("# Generating auth token Failure\n\t*")
@@ -106,22 +103,7 @@ class PANTARIS_APIS:
             json_formatted_str = json.dumps(jsonResponse, indent=2)
             print(json_formatted_str)
             print("Task-Finish : Got required vehicle info with sucess")
-            #creating empty dictionary to store vehicle online informaiton
-            # key = ''
-            # value = 'vehicle not found'
-            # online_info = {}
-            # for vehicle in jsonResponse['_embedded']['vehicles'] :
-            #   #formatted_str = vehicle['vehicleId'] + ':'+ vehicle['onlineStatus']['state'] + '\n'
-            #   #outfile.write(formatted_str)
-            #   online_info[vehicle['vehicleId']] = vehicle['onlineStatus']['state']
-            #   print(online_info) 
-            # if len(online_info) == 0:
-            #    online_info = {key: value}
-            # # Creating json file which has "vehicle online info" - cna be used in robot tests for online vehicle availibility   
-            # json_formatted_str = json.dumps(online_info, indent=2)
-            # with open("online_info.json", "w") as outfile:
-            #     outfile.write(json_formatted_str)
-            # print("Task-Finish : Successfully getting online vehicle info - json file generated")
+
       
 
     def vehicle_token(self, blobId, time_to_live_secs, oneTimePass):
@@ -199,8 +181,7 @@ def args_menu():
     parser.add_argument('-v_id', '--vehicle_id', type=str, help="Specify vehicle ID to get online info for", required=False , default='owa5x-A11LWA')
     parser.add_argument('-c_id', '--client_id', type=str, help="Specify client ID to authorize on Pantaris", required=False, default='')
     parser.add_argument('-c_s', '--client_secret', type=str, help="Specify client secret to authorize on Pantaris", required=False, default='')
-    # parser.add_argument('-u', '--user', type=str, help="Client user name ", required=True)
-    # parser.add_argument('-s', '--secret', type=str, help="Client password ", required=True)
+
     return parser.parse_args()
 
 def main():
