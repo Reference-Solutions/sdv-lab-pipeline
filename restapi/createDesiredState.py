@@ -348,7 +348,43 @@ class createDesiredState:
         if (self.verbosity == True):
             print("imageValue: " + imageValue)
 
-        body = '{ "name": "##name##","specification": {"domains": [{"id": "self-update","components": [{"id": "os-image","version": "##version##","config": [{"key": "image","value": "##imageValue##"}]}],"config": null}],"baselines": null}}'
+        body = "
+        {
+    "name": "##name##",
+    "specification": {
+        "domains": [
+            {
+                "id": "safety-domain",
+                "components": [
+                    {
+                        "id": "app_1",
+                        "version": "##version##",
+                        "config": [
+                            {
+                                "key": "image",
+                                "value": "##imageValue##"
+                            }
+                        ]
+                    }
+                ],
+                "config": [
+                    {
+                        "key": "image-opd-app-1",
+                        "value": "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/vehiclepkg_install_swc_app_opd_auto.tar?token=1b2217f3-03c4-4af4-99b0-e76ad7de08fd"
+                    }
+                ]
+            }
+        ],
+        "baselines": [
+            {
+                "components": [
+                    "safety-domain:app_1"
+                ],
+                "title": "opd-app-1"
+            }
+        ]
+    }
+}"
         body = body.replace("##name##",self.desiredStateName)
         body = body.replace("##version##",self.selfUpdateVersion)
         body = body.replace("##imageValue##",imageValue)
