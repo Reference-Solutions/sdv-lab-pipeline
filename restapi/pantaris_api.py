@@ -89,10 +89,8 @@ class PANTARIS_APIS:
         if Task == "Blob_Meta_Info" :
            _url     = self.serverUrl +  '/' + str(blobId) + "/metadata"
         #In case if no proxy required for example runner is running on private personal machine for qemu
-        if "qemux86-64" in blobId:
-            response = requests.get(url=_url, headers=_headers )
-        else:
-            response = requests.get(url=_url, headers=_headers , proxies=_proxies)
+
+        response = requests.get(url=_url, headers=_headers , proxies=_proxies)
         print("Blob_info : HTTP response status code : ", response.status_code)
         if response.status_code != 200 and response.status_code != 201  :
             print("Task-Error: Getting blob info failure\n\t*")
@@ -117,10 +115,8 @@ class PANTARIS_APIS:
         _files = {'file': open(_file_path,'rb')}
         _url = self.serverUrl 
         #In case if no proxy required for example runner is running on private personal machine for qemu
-        if "qemux86-64" in blobId:
-            response = requests.post(url=_url, params=_params ,  headers=_headers , files=_files )
-        else:
-            response = requests.post(url=_url, params=_params ,  headers=_headers , proxies=_proxies , files=_files )
+
+        response = requests.post(url=_url, params=_params ,  headers=_headers , proxies=_proxies , files=_files )
         print("upload_blob : HTTP response status code : ", response.status_code)
         if response.status_code != 201  :
             print("Task-Error: Upload blob failure\n\t*")
@@ -142,10 +138,8 @@ class PANTARIS_APIS:
         _file_path = file_path
         _url = self.serverUrl + "/" + str(blobId)
         #In case if no proxy required for example runner is running on private personal machine for qemu
-        if "qemux86-64" in blobId:
-            response = requests.get(url=_url,  headers=_headers  )
-        else:
-            response = requests.get(url=_url,  headers=_headers , proxies=_proxies )
+
+        response = requests.get(url=_url,  headers=_headers , proxies=_proxies )
         # response.content used to access payload data in raw bytes format
         print("Download_blob : HTTP response status code : ", response.status_code)
         if response.status_code != 200  :
@@ -165,10 +159,8 @@ class PANTARIS_APIS:
         _url     = self.serverUrl + '/' + str(blobId)
         print(_url)
         #In case if no proxy required for example runner is running on private personal machine for qemu
-        if "qemux86-64" in blobId:
-            response = requests.delete(url=_url, headers=_headers )
-        else:
-            response = requests.delete(url=_url, headers=_headers , proxies=_proxies )
+
+        response = requests.delete(url=_url, headers=_headers , proxies=_proxies )
         print("Delete_blob : HTTP response status code : ", response.status_code)
         #Server is not sending any json responses. So no need to print json response
         if response.status_code != 204 :
@@ -184,11 +176,12 @@ class PANTARIS_APIS:
         #_proxies = {'http' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name,self.password), 'https' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name, self.password) }
         _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
         _headers = { 'accept' : 'application/json' , 'Authorization' : 'Bearer {}'.format(token)  }
-        _url = self.serverUrl_device
+        #_url = self.serverUrl_device
+        _url = "https://api.devices.eu.bosch-mobility-cloud.com/v2/devices/AADemo3"
         _deviceId = deviceId
         # The size of the page to be returned- we limited to 20 - as at max six devices are available for now to get info for
         _params = { 'page': '0' , 'size': '20' , 'query': 'deviceId==*{}*'.format(_deviceId)}
-        response = requests.get(url=_url, params=_params ,  headers=_headers , proxies=_proxies )
+        response = requests.get(url=_url, headers=_headers , proxies=_proxies )
         print("Get_Device_List : HTTP response status code : ", response.status_code)
         if response.status_code != 200  :
             print("Task-Error: Device list failure\n\t*")
@@ -227,10 +220,8 @@ class PANTARIS_APIS:
         _data = {"ttlSeconds": time_to_live_secs , 'oneTimePass' : oneTimePass}
         print(_data)
         #In case if no proxy required for example runner is running on private personal machine for qemu
-        if "qemux86-64" in blobId:
-            response = requests.post(url=_url,  headers=_headers , json=_data )
-        else:
-            response = requests.post(url=_url,  headers=_headers , proxies=_proxies , json=_data )
+
+        response = requests.post(url=_url,  headers=_headers , proxies=_proxies , json=_data )
         print("Device Access_token : HTTP  response status code : ", response.status_code)
         if response.status_code != 200 and response.status_code != 201  :
             print("# Generating device token Failure\n\t*")
