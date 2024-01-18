@@ -20,12 +20,16 @@ class createDesiredState:
 
     secret = ""                         # secret to do requests at otaNG restful API         
     clientId = ""        
-    blobId = "NA"                       # ID of the uploaded blob (needed for desiredState)
+    blobId1 = "kopd_test"
+    blobId2 = "kopdd_test"                       # ID of the uploaded blob (needed for desiredState)
     selfUpdateVersion = "NA"            # SW version string of the update-bundle 
-    file2Upload = "NA"                  # filename (incl. path) to the update-bundle to be uploaded to cloud
-    blobLifeTime = 1                    # time in days the blob is kept at backend side
-    verbosity = False                   # additional trace output
-    tokenId = "NAtokenId"               # tokenID of the uploaded bundle (needed for desiredState)
+    file2Upload1 = "install_swc_app_opd.swpkg"                  # filename (incl. path) to the update-bundle to be uploaded to cloud
+    file2Upload2 = "vehiclepkg_install_swc_app_opd.tar"
+    blobLifeTime = 60                    # time in days the blob is kept at backend side
+    verbosity = True                   # additional trace output
+    tokenId = "NAtokenId" 
+    accessToken2 = "NAtokenId"              # tokenID of the uploaded bundle (needed for desiredState)
+    accessToken1 = "NAtokenId"
     desiredStateName = "desiredState_"  # name of the desiredState on the Pantaris backend (needs to be unique)
     default_color = Fore.WHITE
     alert_color = Fore.RED 
@@ -173,17 +177,17 @@ class createDesiredState:
     ###########################################
     # Upload blob                             #
     ###########################################
-    def uploadBlob(self):
+    def uploadBlob(self,blobId,file2Upload):
         """Issue cURL request to upload blob (rauc update-bundle)."""
 
-        reqURL = "https://api.devices.eu.bosch-mobility-cloud.com/v3/blobs?blobId=" +self.blobId + "&ttlDays=" + str(self.blobLifeTime)
+        reqURL = "https://api.devices.eu.bosch-mobility-cloud.com/v3/blobs?blobId=" +blobId + "&ttlDays=" + str(self.blobLifeTime)
         curl_command = ['curl', '-X', 
                         'POST', '' + reqURL,
                         '-H', 'accept: */*',
                         '-H', 'Prefer: respond-async, wait=300',       # timeout to wait for response
                         '-H', 'Authorization: ' + self.token,
                         '-H', 'Content-Type: multipart/form-data',
-                        '-F', 'file=@' + self.file2Upload
+                        '-F', 'file=@' + file2Upload
                         ]
  
         if (self.verbosity == True):
@@ -243,11 +247,11 @@ class createDesiredState:
     ###########################################
     # Get blob metadata                       #
     ###########################################
-    def getBlobMetadata(self):
+    def getBlobMetadata(self,blobId):
         """Issue cURL request to retrieve information 
            about blod with ID = blobId."""
 
-        reqURL = "https://api.devices.eu.bosch-mobility-cloud.com/v3/blobs/"+self.blobId+"/metadata"
+        reqURL = "https://api.devices.eu.bosch-mobility-cloud.com/v3/blobs/"+blobId+"/metadata"
         curl_command = ['curl', '-X', 
                         'GET', '' + reqURL,
                         '-H', 'accept: application/json',
@@ -287,11 +291,11 @@ class createDesiredState:
     ###########################################
     # Create Access Token                     #
     ###########################################
-    def createAccessToken(self):
+    def createAccessToken(self,blobId):
         """Issue cURL request to retrieve token 
         for blod with ID = blobId."""
 
-        reqURL = "https://api.devices.eu.bosch-mobility-cloud.com/v3/blobs/"+self.blobId+"/access-tokens"
+        reqURL = "https://api.devices.eu.bosch-mobility-cloud.com/v3/blobs/"+blobId+"/access-tokens"
         curl_command = ['curl', '-X', 
                         'POST', '' + reqURL,
                         '-H', 'accept: */*',
@@ -329,7 +333,8 @@ class createDesiredState:
             # retrieve blobID and tokenID (needed to assemble desiredState)
             if (self.blobId != userdata["blobId"]):
                  print(Fore.YELLOW + "WARNING: Received blobID is different to expected one [" + self.blobId + "]" + Fore.WHITE)
-            self.tokenId = userdata["tokenId"]
+            tokenId = userdata["tokenId"]
+            return tokenId
 
             print(Fore.GREEN + "Send url for 'Create Access Token' done successfully" + Fore.WHITE)
         except:
@@ -339,12 +344,12 @@ class createDesiredState:
     ###########################################
     # Create Desired State                    #
     ###########################################
-    def createDesiredState(self):
+    def createDesiredState(self,token1,token2):
         """Issue cURL request to retrieve token 
         for blod with ID = blobId."""
 
-        imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.blobId+"?token="+self.tokenId
-
+        imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.blobId1+"?token="+self.accessToken1
+        imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.blobId2+"?token="+self.accessToken2
         if (self.verbosity == True):
             print("imageValue: " + imageValue)
 
@@ -399,9 +404,11 @@ class createDesiredState:
 
         if (self.readConfigFile("./desiredState.json")):
             self.createNewAccessToken()
-            self.uploadBlob()
-            self.getBlobMetadata()
-            self.createAccessToken()
+            self.uploadBlob(self.blobId1,self.file2Upload1)
+            self.getBlobMetadata(self.blobId1)
+            self.accessToken1 = self.createAccessToken(self.blobId1)
+            self.uploadBlob(self.blobId2,self.file2Upload2)
+            self.accessToken2 = self.createAccessToken(self.blobId2)
             self.createDesiredState()
         else:
             print(Fore.RED + "Exited due to missing parameters!" + Fore.WHITE)

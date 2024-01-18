@@ -1,7 +1,8 @@
 {
   "blobID": "Tr_AVH_app_test_instal",
   "selfUpdateVersion": "v2.1.1",
-  "file2Upload": "appk3_avh_remove_v1.0.swpkg",
+  "file2Upload1": "install_swc_app_opd.swpkg",
+  "file2Upload2": "vehiclepkg_install_swc_app_opd.tar",
   "blobLifeTime": 60,
   "verbosity": true
 }
