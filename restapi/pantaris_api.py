@@ -186,7 +186,7 @@ class PANTARIS_APIS:
             print("Task-Error: Device list failure\n\t*")
             print("HTTP", response.status_code)
             print("Device not found , hence creating new device")
-            #self.createDevice(_deviceId)
+            self.createDevice(_deviceId)
             _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
 
             #self.sys_exit(response.status_code)
@@ -196,8 +196,8 @@ class PANTARIS_APIS:
             print(json_formatted_str)
             print("Task-Finish : Got required device info with sucess")
 
-    def createDevice(deviceId):
-        body = '{"deviceId": "deviceIdtest","model": "NATIVE","iccId": 9991101200003204007,"serialNumber": 2774957644,"customAttributes": {"mobileNumber": "0755654555"}}'
+    def createDevice(self, deviceId):
+        body = '{"deviceId": "deviceIdtest","model": "NATIVE","iccId": 9991101200003204007,"serialNumber": 2774957644,"customAttributes": {"mobileNumber": "0755654555"} }'
         token = self.get_access_token(deviceId)
         print("body: " + body)
 
