@@ -23,7 +23,8 @@ class createDesiredState:
     blobId = "NA" 
     file2Upload = "NA"         
     swpkg_blobId = "kopd_test"
-    vhpkg_blobId = "kopdd_test"                       # ID of the uploaded blob (needed for desiredState)
+    vhpkg_blobId = "kopdd_test"  
+    appName = "opd"                     # ID of the uploaded blob (needed for desiredState)
     selfUpdateVersion = "12.2"            # SW version string of the update-bundle 
     file2Upload1 = "install_swc_app_opd.swpkg"                  # filename (incl. path) to the update-bundle to be uploaded to cloud
     file2Upload2 = "vehiclepkg_install_swc_app_opd.tar"
@@ -69,6 +70,8 @@ class createDesiredState:
         parser.add_argument('swpkg_blobId', help="swpkg_blobId")
         parser.add_argument('vhpkg_blobId', help="vhpkg_blobId")
         parser.add_argument('desiredStateName', help="desiredStateName")
+        parser.add_argument('appName', help="appName")
+        parser.add_argument('selfUpdateVersion', help="selfUpdateVersion")
 
         parser.add_argument('-v', '--version', action='version',
                             version=self.toolVersion, help="Show version number of createDesiredState.py and exit.")
@@ -95,7 +98,13 @@ class createDesiredState:
             print(Fore.RED + "Exit due to missing vhpkg_blobId" + Fore.WHITE)
         self.desiredStateName = sys.argv[5]
         if (self.desiredStateName == "NA"):
-            print(Fore.RED + "Exit due to missing desiredStateName" + Fore.WHITE)             
+            print(Fore.RED + "Exit due to missing desiredStateName" + Fore.WHITE)
+        self.appName = sys.argv[6]
+        if (self.appName == "NA"):
+            print(Fore.RED + "Exit due to missing appName" + Fore.WHITE)
+        self.selfUpdateVersion = sys.argv[7]
+        if (self.selfUpdateVersion == "NA"):
+            print(Fore.RED + "Exit due to missing selfUpdateVersion" + Fore.WHITE)                     
 
 
 
