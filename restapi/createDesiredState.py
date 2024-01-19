@@ -121,7 +121,8 @@ class createDesiredState:
  
         if (self.swpkg_blobId != "NA" and self.selfUpdateVersion != "NA" and self.file2Upload1 != "NA" and
             self.vhpkg_blobId != "" and self.selfUpdateVersion != "" and self.file2Upload2 != ""):
-            print("\nblobId:  \t\t" + self.swpkg_blobId + 
+            print("\nswpkg_blobId:  \t\t" + self.swpkg_blobId + 
+                  "\nvhpkg_blobId:  \t" + self.vhpkg_blobId +
                   "\nselfUpdateVersion:  \t" + self.selfUpdateVersion + 
                   "\nfile2Upload1:  \t\t" + self.file2Upload1 +
                   "\nfile2Upload2:  \t\t" + self.file2Upload2 +
