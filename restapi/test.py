@@ -1,5 +1,5 @@
-def createDevice(self,token1,token2):
-        body = '{"deviceId": "deviceIdtest","model": "NATIVE","iccId": 9991101200003204007,"serialNumber": 2774957644,"customAttributes": {"mobileNumber": "0755654555"}}'
+def createDevice(self,deviceId):
+        body = '{"deviceId": "deviceIdtest","model": "NATIVE","iccId": 9991101200003204007,"serialNumber": 2774957644,"customAttributes": {"mobileNumber": "0755654555"} }'
         token = self.get_access_token(deviceId)
         print("body: " + body)
 

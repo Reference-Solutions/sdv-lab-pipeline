@@ -35,6 +35,7 @@ import argparse
 import requests
 import time
 from datetime import datetime
+from colorama import Fore
 import json
 
 
@@ -42,6 +43,8 @@ class PANTARIS_APIS:
     def __init__(self):
         #Configuring client , urls , secret , tenant
         #Getting client , secret and user credentials -  Coming from workflow secrets
+        self.default_color = Fore.WHITE
+        self.alert_color = Fore.RED 
         self.client_id = ""
         self.client_secret = ""
         self.user_name = ""
@@ -228,12 +231,12 @@ class PANTARIS_APIS:
             for item in userdata:
                 if (item == "error"):
                     cur_color = self.alert_color
-                print(cur_color + "\t" + item.ljust(15) + ": \t" + str(userdata[item]) + Fore.WHITE)
+                print(cur_color + "\t" + item.ljust(15) + ": \t" + str(userdata[item]) )
                 cur_color = self.default_color
         
-            print(Fore.GREEN + "Send url for 'Create device ' done successfully" + Fore.WHITE)
+            print("Send url for 'Create device ' done successfully")
         except:
-            print(Fore.RED + "Send url for 'Create device' failed" + Fore.WHITE)
+            print("Send url for 'Create device' failed")
 
 
 
