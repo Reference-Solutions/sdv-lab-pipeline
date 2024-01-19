@@ -22,8 +22,8 @@ class createDesiredState:
     clientId = "" 
     blobId = "NA" 
     file2Upload = "NA"         
-    blobId1 = "kopd_test"
-    blobId2 = "kopdd_test"                       # ID of the uploaded blob (needed for desiredState)
+    swpkg_blobId = "kopd_test"
+    vhpkg_blobId = "kopdd_test"                       # ID of the uploaded blob (needed for desiredState)
     selfUpdateVersion = "12.2"            # SW version string of the update-bundle 
     file2Upload1 = "install_swc_app_opd.swpkg"                  # filename (incl. path) to the update-bundle to be uploaded to cloud
     file2Upload2 = "vehiclepkg_install_swc_app_opd.tar"
@@ -32,7 +32,7 @@ class createDesiredState:
     tokenId = "NAtokenId" 
     accessToken2 = "NAtokenId"              # tokenID of the uploaded bundle (needed for desiredState)
     accessToken1 = "NAtokenId"
-    desiredStateName = "desiredState_"  # name of the desiredState on the Pantaris backend (needs to be unique)
+    desiredStateName = "dsIndia_"  # name of the desiredState on the Pantaris backend (needs to be unique)
     default_color = Fore.WHITE
     alert_color = Fore.RED 
 
@@ -131,11 +131,12 @@ class createDesiredState:
         #     # assemble desiredState name
         #     self.desiredStateName += self.blobId
  
-        if (self.blobId1 != "NA" and self.selfUpdateVersion != "NA" and self.file2Upload1 != "NA" and
-            self.blobId2 != "" and self.selfUpdateVersion != "" and self.file2Upload2 != ""):
-            print("\nblobId:  \t\t" + self.blobId1 + 
+        if (self.swpkg_blobId != "NA" and self.selfUpdateVersion != "NA" and self.file2Upload1 != "NA" and
+            self.vhpkg_blobId != "" and self.selfUpdateVersion != "" and self.file2Upload2 != ""):
+            print("\nblobId:  \t\t" + self.swpkg_blobId + 
                   "\nselfUpdateVersion:  \t" + self.selfUpdateVersion + 
                   "\nfile2Upload1:  \t\t" + self.file2Upload1 +
+                  "\nfile2Upload2:  \t\t" + self.file2Upload2 +
                   "\ndesiredStateName:  \t" + self.desiredStateName +
                   "\nblobLifeTime:  \t\t" + str(self.blobLifeTime))
             
@@ -350,8 +351,8 @@ class createDesiredState:
         """Issue cURL request to retrieve token 
         for blod with ID = blobId."""
 
-        imageValue1 = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.blobId1+"?token="+token1
-        imageValue2 = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.blobId2+"?token="+token2
+        swpkg_imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.swpkg_blobId+"?token="+token1
+        vhpkg_imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.vhpkg_blobId+"?token="+token2
         if (self.verbosity == True):
             print("imageValue1: " + imageValue1)
             print("imageValue2: " + imageValue2)
@@ -359,8 +360,8 @@ class createDesiredState:
         body = '{"name": "##name##","specification": {"domains": [{"id": "safety-domain","components": [{"id": "app_1","version": "##version##","config": [{"key": "image","value": "##imageValue1##"}]}],"config": [{"key": "image-opd-app-1","value": "##imageValue2##"}]}],"baselines": [{"components": ["safety-domain:app_1"],"title": "opd-app-1"}]}}'
         body = body.replace("##name##",self.desiredStateName)
         body = body.replace("##version##",self.selfUpdateVersion)
-        body = body.replace("##imageValue1##",imageValue1)
-        body = body.replace("##imageValue2##",imageValue2)
+        body = body.replace("##imageValue1##",swpkg_imageValue)
+        body = body.replace("##imageValue2##",vhpkg_imageValue)
         body = body.replace("\n", "")
 
         if (self.verbosity == True):
@@ -408,11 +409,11 @@ class createDesiredState:
 
         if (self.readConfigFile("./desiredState.json")):
             self.createNewAccessToken()
-            self.uploadBlob(self.blobId1,self.file2Upload1)
-            self.getBlobMetadata(self.blobId1)
-            accessToken1 = self.createAccessToken(self.blobId1)
-            self.uploadBlob(self.blobId2,self.file2Upload2)
-            accessToken2 = self.createAccessToken(self.blobId2)
+            self.uploadBlob(self.swpkg_blobId,self.file2Upload1)
+            self.getBlobMetadata(self.swpkg_blobId)
+            accessToken1 = self.createAccessToken(self.swpkg_blobId)
+            self.uploadBlob(self.vhpkg_blobId,self.file2Upload2)
+            accessToken2 = self.createAccessToken(self.vhpkg_blobId)
             self.createDesiredState(accessToken1,accessToken2)
         else:
             print(Fore.RED + "Exited due to missing parameters!" + Fore.WHITE)

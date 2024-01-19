@@ -62,12 +62,7 @@ class PANTARIS_APIS:
         # Only Proxy require not user credential required to get access token
         #_proxies = {'http' : 'http://127.0.0.1:3128' , 'https' : 'http://127.0.0.1:3128' }
         _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
-        #In case if no proxy required for example runner is running on private personal machine for qemu
-        if "qemux86-64" in Id or "A10001-ec" in Id:
-            print("Found Qemu token")
-            response = requests.post(url = self.accessTokenUrl, data = {"grant_type": self.grant_type}, auth = (self.client_id, self.client_secret) )
-        else:
-            response = requests.post(url = self.accessTokenUrl, data = {"grant_type": self.grant_type}, auth = (self.client_id, self.client_secret) , proxies=_proxies )
+        response = requests.post(url = self.accessTokenUrl, data = {"grant_type": self.grant_type}, auth = (self.client_id, self.client_secret) , proxies=_proxies )
         print("Access_token : HTTP  response status code : ", response.status_code)
         if response.status_code != 200 and response.status_code != 201  :
             print("# Generating auth token Failure\n\t*")
@@ -191,28 +186,60 @@ class PANTARIS_APIS:
             print("Task-Error: Device list failure\n\t*")
             print("HTTP", response.status_code)
             print("Device not found , hence creating new device")
+            #self.createDevice(_deviceId)
+            _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+
             #self.sys_exit(response.status_code)
         else: 
             jsonResponse = response.json()
             json_formatted_str = json.dumps(jsonResponse, indent=2)
             print(json_formatted_str)
             print("Task-Finish : Got required device info with sucess")
-            #creating empty dictionary to store device online informaiton
-            # key = ''
-            # value = 'Device not found'
-            # online_info = {}
-            # for device in jsonResponse['_embedded']['devices'] :
-            #   #formatted_str = device['deviceId'] + ':'+ device['onlineStatus']['state'] + '\n'
-            #   #outfile.write(formatted_str)
-            #   online_info[device['deviceId']] = device['onlineStatus']['state']
-            #   print(online_info) 
-            # if len(online_info) == 0:
-            #    online_info = {key: value}
-            # # Creating json file which has "device online info" - cna be used in robot tests for online device availibility   
-            # json_formatted_str = json.dumps(online_info, indent=2)
-            # with open("online_info.json", "w") as outfile:
-            #     outfile.write(json_formatted_str)
-            # print("Task-Finish : Successfully getting online device info - json file generated")
+
+    def createDevice(deviceId):
+        body = '{"deviceId": "deviceIdtest","model": "NATIVE","iccId": 9991101200003204007,"serialNumber": 2774957644,"customAttributes": {"mobileNumber": "0755654555"}}'
+        token = self.get_access_token(deviceId)
+        print("body: " + body)
+
+        curl_command = ['curl', '-X', 
+                        'POST', 'https://api.devices.eu.bosch-mobility-cloud.com/v2/devices',
+                        '-H', 'accept: application/hal+json',
+                        '-H', 'Authorization: ' + token,
+                        '-H', 'Content-Type: application/json',
+                        '-d', '' + body 
+                    ]
+
+
+        print("curl_command: " + str(curl_command))
+
+        try:
+            print("\n" + Fore.BLUE + "Create device \n" + Fore.WHITE)
+
+            # issue curl request
+            process = subprocess.run(curl_command, capture_output=True) 
+            output = process.stdout.decode()
+
+            if (self.verbosity == True):    
+                print("\n\treceived body: " + Fore.BLUE + output + Fore.WHITE)
+
+            # print received data (error in red)
+            cur_color = self.default_color
+            userdata = json.loads(output)
+            for item in userdata:
+                if (item == "error"):
+                    cur_color = self.alert_color
+                print(cur_color + "\t" + item.ljust(15) + ": \t" + str(userdata[item]) + Fore.WHITE)
+                cur_color = self.default_color
+        
+            print(Fore.GREEN + "Send url for 'Create device ' done successfully" + Fore.WHITE)
+        except:
+            print(Fore.RED + "Send url for 'Create device' failed" + Fore.WHITE)
+
+
+
+
+
+
 
     def device_token(self, blobId, time_to_live_secs, oneTimePass):
         print("...Fetching access token for device...")
