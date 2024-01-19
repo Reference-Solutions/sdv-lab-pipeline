@@ -354,14 +354,14 @@ class createDesiredState:
         swpkg_imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.swpkg_blobId+"?token="+token1
         vhpkg_imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.vhpkg_blobId+"?token="+token2
         if (self.verbosity == True):
-            print("imageValue1: " + imageValue1)
-            print("imageValue2: " + imageValue2)
+            print("swpkg_imageValue: " + swpkg_imageValue)
+            print("vhpkg_imageValue: " + vhpkg_imageValue)
 
-        body = '{"name": "##name##","specification": {"domains": [{"id": "safety-domain","components": [{"id": "app_1","version": "##version##","config": [{"key": "image","value": "##imageValue1##"}]}],"config": [{"key": "image-opd-app-1","value": "##imageValue2##"}]}],"baselines": [{"components": ["safety-domain:app_1"],"title": "opd-app-1"}]}}'
+        body = '{"name": "##name##","specification": {"domains": [{"id": "safety-domain","components": [{"id": "app_1","version": "##version##","config": [{"key": "image","value": "##swpkg_imageValue##"}]}],"config": [{"key": "image-opd-app-1","value": "##vhpkg_imageValue##"}]}],"baselines": [{"components": ["safety-domain:app_1"],"title": "opd-app-1"}]}}'
         body = body.replace("##name##",self.desiredStateName)
         body = body.replace("##version##",self.selfUpdateVersion)
-        body = body.replace("##imageValue1##",swpkg_imageValue)
-        body = body.replace("##imageValue2##",vhpkg_imageValue)
+        body = body.replace("##swpkg_imageValue##",swpkg_imageValue)
+        body = body.replace("##vhpkg_imageValue##",vhpkg_imageValue)
         body = body.replace("\n", "")
 
         if (self.verbosity == True):
