@@ -65,6 +65,11 @@ class createDesiredState:
 
         parser.add_argument('secret', help="Access token for otaNG API.")
         parser.add_argument('clientID', help="Technical user for otaNG API")
+
+        parser.add_argument('swpkg_blobId', help="swpkg_blobId")
+        parser.add_argument('vhpkg_blobId', help="vhpkg_blobId")
+        parser.add_argument('desiredStateName', help="desiredStateName")
+
         parser.add_argument('-v', '--version', action='version',
                             version=self.toolVersion, help="Show version number of createDesiredState.py and exit.")
         parser.add_argument('-h', '--help', action='help', default=argparse.SUPPRESS,
@@ -82,6 +87,15 @@ class createDesiredState:
         self.clientId = sys.argv[2]
         if (self.clientId == "NA"):
             print(Fore.RED + "Exit due to missing clientId!" + Fore.WHITE)  
+        self.swpkg_blobId = sys.argv[3]
+        if (self.swpkg_blobId == "NA"):
+            print(Fore.RED + "Exit due to missing swpkg_blobId" + Fore.WHITE)
+        self.vhpkg_blobId = sys.argv[4]
+        if (self.vhpkg_blobId == "NA"):
+            print(Fore.RED + "Exit due to missing vhpkg_blobId" + Fore.WHITE)
+        self.desiredStateName = sys.argv[5]
+        if (self.desiredStateName == "NA"):
+            print(Fore.RED + "Exit due to missing desiredStateName" + Fore.WHITE)             
 
 
 
@@ -92,44 +106,9 @@ class createDesiredState:
     # Read configuration file                 #
     ###########################################
     def readConfigFile(self, json_file_path):
-        """Reads in configuration file (json)."""
+        """Reads the inputs ."""
 
-        #json_file_path = "./desiredState.json"  # ToDo
 
-        # open configuration file
-        # config_data = "NA"
-        # try:
-        #     with open(json_file_path, 'r') as j:
-        #         config_data = json.loads(j.read())
-        # except:
-        #     print(Fore.RED + "Could not open " + json_file_path + "in working directory" + Fore.WHITE)
-        #     return False
-
-        # # retrieve values
-        # if (config_data != "NA"):
-        #     try:
-        #         self.blobId = config_data["blobID"]
-        #     except KeyError as ke:
-        #         print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
-        #     try:
-        #         self.selfUpdateVersion = config_data["selfUpdateVersion"]
-        #     except KeyError as ke:
-        #         print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
-        #     try:
-        #         self.file2Upload = config_data["file2Upload"]
-        #     except KeyError as ke:
-        #         print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
-        #     try:
-        #         self.verbosity = config_data["verbosity"]
-        #     except KeyError as ke:
-        #         print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
-        #     try:
-        #         self.blobLifeTime = config_data["blobLifeTime"]
-        #     except KeyError as ke:
-        #         print(Fore.RED + "Key " + str(ke) + " not found in " + json_file_path + Fore.WHITE)
-
-        #     # assemble desiredState name
-        #     self.desiredStateName += self.blobId
  
         if (self.swpkg_blobId != "NA" and self.selfUpdateVersion != "NA" and self.file2Upload1 != "NA" and
             self.vhpkg_blobId != "" and self.selfUpdateVersion != "" and self.file2Upload2 != ""):
