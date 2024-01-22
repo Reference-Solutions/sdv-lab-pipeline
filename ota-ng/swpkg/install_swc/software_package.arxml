@@ -14,7 +14,7 @@
                   <SHORT-NAME>SoftwarePackage</SHORT-NAME>
                   <ELEMENTS>
                     <SOFTWARE-PACKAGE>
-                      <SHORT-NAME>install_swc_app</SHORT-NAME>
+                      <SHORT-NAME>__APP_NAME__</SHORT-NAME>
                       <CATEGORY>APPLICATION_LAYER</CATEGORY>
                       <ACTION-TYPE>INSTALL</ACTION-TYPE>
                       <ACTIVATION-ACTION>RESTART-APPLICATION</ACTIVATION-ACTION>
@@ -22,7 +22,7 @@
                       <ESTIMATED-DURATION-OF-OPERATION>0.0</ESTIMATED-DURATION-OF-OPERATION>
                       <MINIMUM-SUPPORTED-UCM-VERSION>2.7.0.0</MINIMUM-SUPPORTED-UCM-VERSION>
                       <PACKAGER-ID>11</PACKAGER-ID>
-                      <SOFTWARE-CLUSTER-REF DEST="SOFTWARE-CLUSTER">/xAAP/UCMS/BT/SoftwareClusters/install_swc_app</SOFTWARE-CLUSTER-REF>
+                      <SOFTWARE-CLUSTER-REF DEST="SOFTWARE-CLUSTER">/xAAP/UCMS/BT/SoftwareClusters/__APP_NAME__</SOFTWARE-CLUSTER-REF>
                       <UNCOMPRESSED-SOFTWARE-CLUSTER-SIZE>0</UNCOMPRESSED-SOFTWARE-CLUSTER-SIZE>
                     </SOFTWARE-PACKAGE>
                   </ELEMENTS>
