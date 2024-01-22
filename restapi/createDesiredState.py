@@ -22,12 +22,12 @@ class createDesiredState:
     clientId = "" 
     blobId = "NA" 
     file2Upload = "NA"         
-    swpkg_blobId = "kopd_test"
-    vhpkg_blobId = "kopdd_test"  
+    swpkgBlobId = "kopd_test"
+    vhpkgBlobId = "kopdd_test"  
     appName = "opd"                     # ID of the uploaded blob (needed for desiredState)
     selfUpdateVersion = "12.2"            # SW version string of the update-bundle 
-    file2Upload1 = "install_swc_app_opd.swpkg"                  # filename (incl. path) to the update-bundle to be uploaded to cloud
-    file2Upload2 = "vehiclepkg_install_swc_app_opd.tar"
+    swpkgFile2Upload = "swpkg"                  # filename (incl. path) to the update-bundle to be uploaded to cloud
+    vhpkgFile2Upload = "vhpkg"
     blobLifeTime = 60                    # time in days the blob is kept at backend side
     verbosity = True                   # additional trace output
     tokenId = "NAtokenId" 
@@ -67,11 +67,13 @@ class createDesiredState:
         parser.add_argument('secret', help="Access token for otaNG API.")
         parser.add_argument('clientID', help="Technical user for otaNG API")
 
-        parser.add_argument('swpkg_blobId', help="swpkg_blobId")
-        parser.add_argument('vhpkg_blobId', help="vhpkg_blobId")
+        parser.add_argument('swpkgBlobId', help="swpkgBlobId")
+        parser.add_argument('vhpkgBlobId', help="vhpkgBlobId")
         parser.add_argument('desiredStateName', help="desiredStateName")
         parser.add_argument('appName', help="appName")
         parser.add_argument('selfUpdateVersion', help="selfUpdateVersion")
+        parser.add_argument('swpkgFile2Upload', help="swpkgFile2Upload")
+        parser.add_argument('vhpkgFile2Upload', help="vhpkgFile2Upload")
 
         parser.add_argument('-v', '--version', action='version',
                             version=self.toolVersion, help="Show version number of createDesiredState.py and exit.")
@@ -90,12 +92,12 @@ class createDesiredState:
         self.clientId = sys.argv[2]
         if (self.clientId == "NA"):
             print(Fore.RED + "Exit due to missing clientId!" + Fore.WHITE)  
-        self.swpkg_blobId = sys.argv[3]
-        if (self.swpkg_blobId == "NA"):
-            print(Fore.RED + "Exit due to missing swpkg_blobId" + Fore.WHITE)
-        self.vhpkg_blobId = sys.argv[4]
-        if (self.vhpkg_blobId == "NA"):
-            print(Fore.RED + "Exit due to missing vhpkg_blobId" + Fore.WHITE)
+        self.swpkgBlobId = sys.argv[3]
+        if (self.swpkgBlobId == "NA"):
+            print(Fore.RED + "Exit due to missing swpkgBlobId" + Fore.WHITE)
+        self.vhpkgBlobId = sys.argv[4]
+        if (self.vhpkgBlobId == "NA"):
+            print(Fore.RED + "Exit due to missing vhpkgBlobId" + Fore.WHITE)
         self.desiredStateName = sys.argv[5]
         if (self.desiredStateName == "NA"):
             print(Fore.RED + "Exit due to missing desiredStateName" + Fore.WHITE)
@@ -104,7 +106,14 @@ class createDesiredState:
             print(Fore.RED + "Exit due to missing appName" + Fore.WHITE)
         self.selfUpdateVersion = sys.argv[7]
         if (self.selfUpdateVersion == "NA"):
-            print(Fore.RED + "Exit due to missing selfUpdateVersion" + Fore.WHITE)                     
+            print(Fore.RED + "Exit due to missing selfUpdateVersion" + Fore.WHITE)
+        self.swpkgFile2Upload = sys.argv[8]
+        if (self.swpkgFile2Upload == "NA"):
+            print(Fore.RED + "Exit due to missing swpkgFile2Upload" + Fore.WHITE)
+        self.vhpkgFile2Upload = sys.argv[9]
+        if (self.vhpkgFile2Upload == "NA"):
+            print(Fore.RED + "Exit due to missing vhpkgFile2Upload" + Fore.WHITE)        
+                                 
 
 
 
@@ -119,26 +128,26 @@ class createDesiredState:
 
 
  
-        if (self.swpkg_blobId != "NA" and self.selfUpdateVersion != "NA" and self.file2Upload1 != "NA" and
-            self.vhpkg_blobId != "" and self.selfUpdateVersion != "" and self.file2Upload2 != ""):
-            print("\nswpkg_blobId:  \t\t" + self.swpkg_blobId + 
-                  "\nvhpkg_blobId:  \t" + self.vhpkg_blobId +
+        if (self.swpkgBlobId != "NA" and self.selfUpdateVersion != "NA" and self.swpkgFile2Upload != "NA" and
+            self.vhpkgBlobId != "" and self.selfUpdateVersion != "" and self.vhpkgFile2Upload != ""):
+            print("\nswpkgBlobId:  \t\t" + self.swpkgBlobId + 
+                  "\nvhpkgBlobId:  \t" + self.vhpkgBlobId +
                   "\nselfUpdateVersion:  \t" + self.selfUpdateVersion + 
-                  "\nfile2Upload1:  \t\t" + self.file2Upload1 +
-                  "\nfile2Upload2:  \t\t" + self.file2Upload2 +
+                  "\nswpkgFile2Upload:  \t\t" + self.swpkgFile2Upload +
+                  "\nvhpkgFile2Upload:  \t\t" + self.vhpkgFile2Upload +
                   "\ndesiredStateName:  \t" + self.desiredStateName +
                   "\nblobLifeTime:  \t\t" + str(self.blobLifeTime))
             
             # check if file to upload is available
-            if(os.path.isfile(self.file2Upload1) == False):
-                print(Fore.RED + "File to upload " + self.file2Upload1 + " not found in working directory!" + Fore.WHITE)
+            if(os.path.isfile(self.swpkgFile2Upload) == False):
+                print(Fore.RED + "File to upload " + self.swpkgFile2Upload + " not found in working directory!" + Fore.WHITE)
                 return False
                 
             return True
         else:
             print(Fore.RED + "blobId: " + self.blobId + 
                   "\nor selfUpdateVersion: " + self.selfUpdateVersion + 
-                  "\nor file2Upload1: " + self.file2Upload1 + "are not set!" + Fore.WHITE)
+                  "\nor swpkgFile2Upload: " + self.swpkgFile2Upload + "are not set!" + Fore.WHITE)
             return False
 
 
@@ -340,18 +349,18 @@ class createDesiredState:
         """Issue cURL request to retrieve token 
         for blod with ID = blobId."""
 
-        swpkg_imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.swpkg_blobId+"?token="+token1
-        vhpkg_imageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.vhpkg_blobId+"?token="+token2
+        swpkgImageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.swpkgBlobId+"?token="+token1
+        vhpkgImageValue = "https://api.devices.eu.bosch-mobility-cloud.com/v3/device/blobs/"+self.vhpkgBlobId+"?token="+token2
         if (self.verbosity == True):
-            print("swpkg_imageValue: " + swpkg_imageValue)
-            print("vhpkg_imageValue: " + vhpkg_imageValue)
+            print("swpkgImageValue: " + swpkgImageValue)
+            print("vhpkgImageValue: " + vhpkgImageValue)
 
-        body = '{"name": "##name##","specification": {"domains": [{"id": "safety-domain","components": [{"id": "app_1","version": "##version##","config": [{"key": "image","value": "##swpkg_imageValue##"}]}],"config": [{"key": "image-##appname##-app","value": "##vhpkg_imageValue##"}]}],"baselines": [{"components": ["safety-domain:app_1"],"title": "##appname##-app"}]} }'
+        body = '{"name": "##name##","specification": {"domains": [{"id": "safety-domain","components": [{"id": "app_1","version": "##version##","config": [{"key": "image","value": "##swpkgImageValue##"}]}],"config": [{"key": "image-##appname##-app","value": "##vhpkgImageValue##"}]}],"baselines": [{"components": ["safety-domain:app_1"],"title": "##appname##-app"}]} }'
         body = body.replace("##name##",self.desiredStateName)
         body = body.replace("##version##",self.selfUpdateVersion)
         body = body.replace("##appname##",self.appName)
-        body = body.replace("##swpkg_imageValue##",swpkg_imageValue)
-        body = body.replace("##vhpkg_imageValue##",vhpkg_imageValue)
+        body = body.replace("##swpkgImageValue##",swpkgImageValue)
+        body = body.replace("##vhpkgImageValue##",vhpkgImageValue)
         body = body.replace("\n", "")
 
         if (self.verbosity == True):
@@ -399,11 +408,11 @@ class createDesiredState:
 
         if (self.readConfigFile("./desiredState.json")):
             self.createNewAccessToken()
-            self.uploadBlob(self.swpkg_blobId,self.file2Upload1)
-            self.getBlobMetadata(self.swpkg_blobId)
-            accessToken1 = self.createAccessToken(self.swpkg_blobId)
-            self.uploadBlob(self.vhpkg_blobId,self.file2Upload2)
-            accessToken2 = self.createAccessToken(self.vhpkg_blobId)
+            self.uploadBlob(self.swpkgBlobId,self.swpkgFile2Upload)
+            self.getBlobMetadata(self.swpkgBlobId)
+            accessToken1 = self.createAccessToken(self.swpkgBlobId)
+            self.uploadBlob(self.vhpkgBlobId,self.vhpkgFile2Upload)
+            accessToken2 = self.createAccessToken(self.vhpkgBlobId)
             self.createDesiredState(accessToken1,accessToken2)
         else:
             print(Fore.RED + "Exited due to missing parameters!" + Fore.WHITE)
