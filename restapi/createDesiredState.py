@@ -346,9 +346,10 @@ class createDesiredState:
             print("swpkg_imageValue: " + swpkg_imageValue)
             print("vhpkg_imageValue: " + vhpkg_imageValue)
 
-        body = '{"name": "##name##","specification": {"domains": [{"id": "safety-domain","components": [{"id": "app_1","version": "##version##","config": [{"key": "image","value": "##swpkg_imageValue##"}]}],"config": [{"key": "image-opd-app-1","value": "##vhpkg_imageValue##"}]}],"baselines": [{"components": ["safety-domain:app_1"],"title": "opd-app-1"}]}}'
+        body = '{"name": "##name##","specification": {"domains": [{"id": "safety-domain","components": [{"id": "app_1","version": "##version##","config": [{"key": "image","value": "##swpkg_imageValue##"}]}],"config": [{"key": "image-##appname##-app","value": "##vhpkg_imageValue##"}]}],"baselines": [{"components": ["safety-domain:app_1"],"title": "##appname##-app"}]} }'
         body = body.replace("##name##",self.desiredStateName)
         body = body.replace("##version##",self.selfUpdateVersion)
+        body = body.replace("##appname##",self.appName)
         body = body.replace("##swpkg_imageValue##",swpkg_imageValue)
         body = body.replace("##vhpkg_imageValue##",vhpkg_imageValue)
         body = body.replace("\n", "")
