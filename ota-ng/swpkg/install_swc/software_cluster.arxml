@@ -14,7 +14,7 @@
                   <SHORT-NAME>SoftwareClusters</SHORT-NAME>
                   <ELEMENTS>
                     <SOFTWARE-CLUSTER>
-                      <SHORT-NAME>__APP_NAME__</SHORT-NAME>
+                      <SHORT-NAME>install_swc_app</SHORT-NAME>
                       <CATEGORY>APPLICATION_LAYER</CATEGORY>
                       <ADMIN-DATA>
                         <SDGS>
@@ -40,7 +40,7 @@
                                   <SD GID="compression_type">None</SD>
                                   <SD GID="update_type">Application</SD>
                                   <SD GID="root_path">/opt/vrte/user_app</SD>
-                                  <SD GID="name">__APP_NAME__</SD>
+                                  <SD GID="name">install_swc_app_1_random_data.tar</SD>
                                 </SDG>
                               </SDG>
                             </SDG>
@@ -59,7 +59,7 @@
                       <RELEASE-NOTES-REF DEST="DOCUMENTATION">/xAAP/UCMS/BT/SoftwareClusters/ReleaseNotes</RELEASE-NOTES-REF>
                       <TYPE-APPROVAL>India</TYPE-APPROVAL>
                       <VENDOR-ID>11</VENDOR-ID>
-                      <VERSION>__APP_VERSION__</VERSION>
+                      <VERSION>1.0.0</VERSION>
                     </SOFTWARE-CLUSTER>
                   </ELEMENTS>
                 </AR-PACKAGE>

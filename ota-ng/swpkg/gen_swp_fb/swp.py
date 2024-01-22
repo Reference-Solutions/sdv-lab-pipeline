@@ -226,14 +226,12 @@ class UCM(pkg.Container):
 
             # Data blocks created for normal artefact data, with corresponding groups. groups start from 3 since 1/2 reserved for swp swc json
             for idx, (man, art) in enumerate(zip(sp_man, spec['artefact']), 2):
-                #Disabled due to sporadic failures in BT, PWI: 52363
-                #if man['compressionType'] == "None":
-                #    if man['archiveType'] != art['type']:
-                #        raise TypeError(" Given artefact type in update manifest does not correspond to actual artefact type")
-                #else :
-                #    if man['compressionType'] != art['type']:
-                #        raise TypeError(" Given artefact type in update manifest does not correspond to actual artefact type")
-                
+                if man['compressionType'] == "None":
+                    if man['archiveType'] != art['type']:
+                        raise TypeError(" Given artefact type in update manifest does not correspond to actual artefact type")
+                else :
+                    if man['compressionType'] != art['type']:
+                        raise TypeError(" Given artefact type in update manifest does not correspond to actual artefact type")
                 #IDENT = BTD.UCM_SOFTWARE_PACKAGE_APPLICATION.value # UCM.artefact_type_map(sp_man['artefact_type'])      # Define type kImage, kApp ...             ERR TO BE ADDRESSED
                 blocks.append({
                     'IDENT': UCM.artefact_type_map(man['updateType']),
