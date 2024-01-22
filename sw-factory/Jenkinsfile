@@ -63,7 +63,7 @@ env.pip_vrte_pull_stage = "false"
 env.pip_flashing_vip_stage = "false"
 env.pip_dac_stage = "false"
 env.pip_sw_package_creation_stage = "false"
-env.pip_checkout_stage = "false"
+env.pip_checkout_stage = "true"
 
 
 
