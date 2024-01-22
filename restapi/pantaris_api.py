@@ -63,9 +63,9 @@ class PANTARIS_APIS:
     def get_access_token(self , Id):
         print("...Fetching access token...")
         # Only Proxy require not user credential required to get access token
-        #_proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' : 'http://rb-proxy-de.bosch.com:8080' }
-        _proxies = {'http' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name, self.password) }
-        #_proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+        #_proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' : 'http://rb-proxy-in.bosch.com:8080' }
+        _proxies = {'http' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name, self.password) }
+        #_proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
         response = requests.post(url = self.accessTokenUrl, data = {"grant_type": self.grant_type}, auth = (self.client_id, self.client_secret) , proxies=_proxies )
         print("Access_token : HTTP  response status code : ", response.status_code)
         if response.status_code != 200 and response.status_code != 201  :
@@ -80,8 +80,8 @@ class PANTARIS_APIS:
         print("Task : Performing Blob info...")
         token = self.get_access_token(blobId)
         #Providing user credentials - Proxy Authentication Required - Getting from workflow secrets
-        #_proxies = {'http' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name, self.password) }
-        _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+        #_proxies = {'http' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name, self.password) }
+        _proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
         _headers = { 'accept' : 'application/json' , 'Authorization' : 'Bearer {}'.format(token) }
         if Task == "Blob_Page_Info" :
            _url     = self.serverUrl + "?page=" + str(page) + "&pageSize=" + str(pagesize)
@@ -107,8 +107,8 @@ class PANTARIS_APIS:
         token = self.get_access_token(blobId)
         _file_path = file_path
         print(_file_path)
-        #_proxies = {'http' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name, self.password) }
-        _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+        #_proxies = {'http' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name, self.password) }
+        _proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
         _headers = { 'accept' : '*/*' , 'Authorization' : 'Bearer {}'.format(token) }
         _params = { 'blobId': str(blobId) , 'ttlDays': str(time_to_live_days)}
         _files = {'file': open(_file_path,'rb')}
@@ -131,8 +131,8 @@ class PANTARIS_APIS:
     def download_blob(self , blobId , file_path):
         print("Task : Performing Blob Download...")
         token = self.get_access_token(blobId)
-        #_proxies = {'http' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name, self.password) }
-        _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+        #_proxies = {'http' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name, self.password) }
+        _proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
         _headers = { 'accept' : 'application/octet-stream' , 'Authorization' : 'Bearer {}'.format(token) }
         _file_path = file_path
         _url = self.serverUrl + "/" + str(blobId)
@@ -152,8 +152,8 @@ class PANTARIS_APIS:
     def delete_blob(self , blobId ):
         print("Task : Performing Blob delete...")
         token = self.get_access_token(blobId)
-        #_proxies = {'http' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name, self.password) }
-        _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+        #_proxies = {'http' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name, self.password) }
+        _proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
         _headers = { 'accept' : '*/*' , 'Authorization' : 'Bearer {}'.format(token)  }
         _url     = self.serverUrl + '/' + str(blobId)
         print(_url)
@@ -172,8 +172,8 @@ class PANTARIS_APIS:
     def device_list(self , deviceId):
         print("Task : Getting online device list...")
         token = self.get_access_token(deviceId)
-        _proxies = {'http' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name, self.password) }
-        #_proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+        _proxies = {'http' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name, self.password) }
+        #_proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
         #_headers = { 'accept' : 'application/json' , 'Authorization' : 'Bearer {}'.format(token)  }
         _headers = {
         'Authorization': f'Bearer {token}',
@@ -191,7 +191,7 @@ class PANTARIS_APIS:
             print("HTTP", response.status_code)
             print("Device not found , hence creating new device")
             self.createDevice(_deviceId)
-            _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+            _proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
 
             #self.sys_exit(response.status_code)
         else: 
@@ -250,8 +250,8 @@ class PANTARIS_APIS:
         token = self.get_access_token(blobId)
         #print(token)
         #Providing user credentials - Proxy Authentication Required - Getting from workflow secrets
-        #_proxies = {'http' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name, self.password) }
-        _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+        #_proxies = {'http' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-in.bosch.com:8080'.format(self.user_name, self.password) }
+        _proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
         _headers = { 'accept' : '*/*', 'Authorization' : 'Bearer {}'.format(token) , 'Content-Type' : 'application/json' }
         _url     = self.serverUrl +  '/' + str(blobId) + "/access-tokens"
         print(_url)
