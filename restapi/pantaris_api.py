@@ -47,8 +47,8 @@ class PANTARIS_APIS:
         self.alert_color = Fore.RED 
         self.client_id = ""
         self.client_secret = ""
-        self.user_name = ""
-        self.password = ""
+        self.user_name = "WWT1COB"
+        self.password = "Battle@12345"
         self.baseUrl = "https://p2.authz.bosch.com"
         self.serverUrl = "https://api.devices.eu.bosch-mobility-cloud.com/v3/blobs"
         # Using "device managemnet" endpoint
@@ -64,7 +64,8 @@ class PANTARIS_APIS:
         print("...Fetching access token...")
         # Only Proxy require not user credential required to get access token
         #_proxies = {'http' : 'http://127.0.0.1:3128' , 'https' : 'http://127.0.0.1:3128' }
-        _proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
+        _proxies = {'http' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name,self.password), 'https' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name, self.password) }
+        #_proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
         response = requests.post(url = self.accessTokenUrl, data = {"grant_type": self.grant_type}, auth = (self.client_id, self.client_secret) , proxies=_proxies )
         print("Access_token : HTTP  response status code : ", response.status_code)
         if response.status_code != 200 and response.status_code != 201  :
@@ -171,8 +172,8 @@ class PANTARIS_APIS:
     def device_list(self , deviceId):
         print("Task : Getting online device list...")
         token = self.get_access_token(deviceId)
-        #_proxies = {'http' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name,self.password), 'https' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name, self.password) }
-        _proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
+        _proxies = {'http' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name,self.password), 'https' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name, self.password) }
+        #_proxies = {'http' : 'http://rb-proxy-in.bosch.com:8080' , 'https' :  'http://rb-proxy-in.bosch.com:8080' }
         #_headers = { 'accept' : 'application/json' , 'Authorization' : 'Bearer {}'.format(token)  }
         _headers = {
         'Authorization': f'Bearer {token}',
