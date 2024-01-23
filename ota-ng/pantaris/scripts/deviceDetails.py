@@ -47,8 +47,8 @@ class PANTARIS_APIS:
         self.alert_color = Fore.RED 
         self.client_id = ""
         self.client_secret = ""
-        self.user_name = "WWT1COB"
-        self.password = "Battle@12345"
+        self.user_name = ""
+        self.password = ""
         self.baseUrl = "https://p2.authz.bosch.com"
         self.serverUrl = "https://api.devices.eu.bosch-mobility-cloud.com/v3/blobs"
         # Using "device managemnet" endpoint
