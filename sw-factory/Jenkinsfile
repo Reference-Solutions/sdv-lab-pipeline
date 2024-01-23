@@ -1,22 +1,21 @@
-@Library('RefSolutions-Pipeliner@feature/sw-factory-pipeline') _ // Load the my-nested-library as a shared library
+@Library('RefSolutions-Pipeliner@feature/sw_factory_common_pipeline') _ // Load the my-nested-library as a shared library
 
+env.pip_labels = "windows-lab-pc"
 
-// Define environment variables
-env.CHECKOUT_URL_1 = "https://github.boschdevcloud.com/exmachina/VIP_XSPACE_E2E.git"
-env.CHECKOUT_BRANCH_1 = "main"
+env.CHECKOUT_URL_1 = "https://github.boschdevcloud.com/exmachina/qnx-hv-nxp-s32g.git"
+env.CHECKOUT_BRANCH_1 = "XSPACE_SDV"
 env.CHECKOUT_CREDENTIALS_ID_1 = "hari-user-github"
 
-
-env.CHECKOUT_URL_2 = "https://github.boschdevcloud.com/exmachina/qnx-hv-nxp-s32g.git"
-env.CHECKOUT_BRANCH_2 = "XSPACE_SDV"
-env.CHECKOUT_CREDENTIALS_ID_2 = "hari-user-github"
+// Define environment variables
+env.CHECKOUT_URL_2 = "https://github.com/Reference-Solutions/VIP_XSPACE_E2E.git"
+env.CHECKOUT_BRANCH_2 = "master"
+env.CHECKOUT_CREDENTIALS_ID_2 = "Github_RefSolution"
 
 env.CHECKOUT_COUNT = 2
 
 //Define pip variables
-env.pip_asw_build_dir_path = "VIP_XSPACE_E2E/M7/vip-project-uC-AR45"
-env.pip_bsw_build_dir_path = "VIP_XSPACE_E2E/M7/cubas-nxp-s32g-AR45"
-env.pip_integeration_dir_path = "VIP_XSPACE_E2E/M7/vip-project-uC-AR45"
+env.pip_bsw_dir_path = "VIP_XSPACE_E2E/M7/cubas-nxp-s32g-AR45"
+env.pip_build_dir_path = "VIP_XSPACE_E2E/M7/vip-project-uC-AR45"
 env.pip_bsw_pre_build_file_name = "PreBuild.bat"
 env.pip_asw_build_file_name = "ConanBuild.bat"
 env.pip_bsw_build_file_name = "Build.bat"
@@ -31,12 +30,29 @@ env.pip_project_variant = "VIP_MAIN_BOARD"
 // Define environment variables
 env.pip_artifact_version = "v1.0.0"
 env.pip_qnx_sdk_path = "C:/Users/Public/qnx_7.1.0"
+env.pip_qnx_src_dir = "qnx-hv-nxp-s32g"
 
-//Common variables
+// Define 
+env.pip_swc_dir_path = 'xspace-Pipeline/ota-ng/swpkg/install_swc/'
+env.pip_gen_swp_dir_path = 'xspace-Pipeline/ota-ng/swpkg/gen_swp_fb/'
+env.pip_app_dir_path = 'xspace-Pipeline/ota-ng/opd/'
+env.pip_app_name = 'opd'
+env.pip_app_version = '1.0.0'
+env.pip_action_type = 'INSTALL'
+env.pip_vrtefs_tool_path = 'C:/toolbase/vrte_adaptive_studio/r23-08/vrte_fs/'
+env.pip_vpkg_dir_path = 'xspace-Pipeline/ota-ng/vpkg/'
+
+// Common variables
 
 env.pip_archive_patterns = "qnx-hv-nxp-s32g/images/*.ui VIP_XSPACE_E2E/M7/vip-project-uC-AR45/out/variants/vip-mainboard/s32g-uC/arc/bin/"
 
 //Define stages
 env.pip_artifactory_upload_stage = "false"
 env.pip_sonar_stage = "false"
-execArcBswPipeline()
+//env.pip_qnx_build_stage = "false"
+//env.pip_arc_build_stage = "false"
+//env.pip_checkout_stage = "false"
+//env.pip_archive_stage = "false"
+//env.pip_versioning_stage = "false"
+
+execSwFactoryPipeline()
