@@ -172,7 +172,7 @@ class PANTARIS_APIS:
     def device_list(self , deviceId):
         print("Task : Getting online device list...")
         token = self.get_access_token(deviceId)
-        _proxies = {'http' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name, self.password) }
+        #_proxies = {'http' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name, self.password) }
         #_proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
         #_headers = { 'accept' : 'application/json' , 'Authorization' : 'Bearer {}'.format(token)  }
         _headers = {
@@ -184,7 +184,7 @@ class PANTARIS_APIS:
         # The size of the page to be returned- we limited to 20 - as at max six devices are available for now to get info for
         #_params = { 'page': '0' , 'size': '20' , 'query': 'deviceId==*{}*'.format(_deviceId)}
         _params = { 'query': 'deviceId==*{}*'.format(_deviceId)}
-        response = requests.get(url=_url, headers=_headers , proxies=_proxies )
+        response = requests.get(url=_url, headers=_headers )
         print("Get_Device_List : HTTP response status code : ", response.status_code)
         if response.status_code != 200  :
             print("Task-Error: Device list failure\n\t*")
@@ -251,7 +251,7 @@ class PANTARIS_APIS:
         #print(token)
         #Providing user credentials - Proxy Authentication Required - Getting from workflow secrets
         #_proxies = {'http' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name,self.password), 'https' : 'http://{}:{}@rb-proxy-de.bosch.com:8080'.format(self.user_name, self.password) }
-        _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+        #_proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
         _headers = { 'accept' : '*/*', 'Authorization' : 'Bearer {}'.format(token) , 'Content-Type' : 'application/json' }
         _url     = self.serverUrl +  '/' + str(blobId) + "/access-tokens"
         print(_url)
@@ -259,7 +259,7 @@ class PANTARIS_APIS:
         print(_data)
         #In case if no proxy required for example runner is running on private personal machine for qemu
 
-        response = requests.post(url=_url,  headers=_headers , proxies=_proxies , json=_data )
+        response = requests.post(url=_url,  headers=_headers , json=_data )
         print("Device Access_token : HTTP  response status code : ", response.status_code)
         if response.status_code != 200 and response.status_code != 201  :
             print("# Generating device token Failure\n\t*")

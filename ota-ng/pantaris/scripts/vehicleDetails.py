@@ -80,7 +80,7 @@ class PANTARIS_APIS:
         print("Task : Getting online vehicle list...")
         token = self.get_access_token(vehicleId)
         #_proxies = {'http' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name,self.password), 'https' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name, self.password) }
-        _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+        #_proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
         #_headers = { 'accept' : 'application/json' , 'Authorization' : 'Bearer {}'.format(token)  }
         _headers = {
         'Authorization': f'Bearer {token}',
@@ -91,7 +91,7 @@ class PANTARIS_APIS:
         # The size of the page to be returned- we limited to 20 - as at max six vehicles are available for now to get info for
         #_params = { 'page': '0' , 'size': '20' , 'query': 'vehicleId==*{}*'.format(_vehicleId)}
         _params = { 'query': 'vehicleId==*{}*'.format(_vehicleId)}
-        response = requests.get(url=_url, headers=_headers , proxies=_proxies )
+        response = requests.get(url=_url, headers=_headers )
         print("Get_vehicle_list : HTTP response status code : ", response.status_code)
         if response.status_code != 200  :
             print("Task-Error: vehicle list failure\n\t*")
@@ -112,7 +112,7 @@ class PANTARIS_APIS:
         #print(token)
         #Providing user credentials - Proxy Authentication Required - Getting from workflow secrets
         #_proxies = {'http' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name,self.password), 'https' : 'http://{}:{}@127.0.0.1:3128'.format(self.user_name, self.password) }
-        _proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
+        #_proxies = {'http' : 'http://rb-proxy-de.bosch.com:8080' , 'https' :  'http://rb-proxy-de.bosch.com:8080' }
         _headers = { 'accept' : '*/*', 'Authorization' : 'Bearer {}'.format(token) , 'Content-Type' : 'application/json' }
         _url     = self.serverUrl +  '/' + str(blobId) + "/access-tokens"
         print(_url)
@@ -120,7 +120,7 @@ class PANTARIS_APIS:
         print(_data)
         #In case if no proxy required for example runner is running on private personal machine for qemu
 
-        response = requests.post(url=_url,  headers=_headers , proxies=_proxies , json=_data )
+        response = requests.post(url=_url,  headers=_headers , json=_data )
         print("vehicle Access_token : HTTP  response status code : ", response.status_code)
         if response.status_code != 200 and response.status_code != 201  :
             print("# Generating vehicle token Failure\n\t*")
