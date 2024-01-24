@@ -53,7 +53,7 @@
 									"softwarePackage": [
 										{
 											"name": "app_1",
-											"size": "__SW_PACKAGE_SIZE__"
+											"size": __SW_PACKAGE_SIZE__
 										}
 									]
 								}
