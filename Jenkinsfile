@@ -8,4 +8,7 @@ env.pip_app_name = "One_Pedal_Drive"
 env.pip_app_path= "home/ath8cob/actions-runner/_work/opd/opd/build_qnx710/src"
 env.pip_app_folder = "build_qnx710.zip"
 env.pip_pat_token = "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"
+env.CHECKOUT_URL_1 = "https://github.boschdevcloud.com/ATH8COB/opd.git"
+env.CHECKOUT_BRANCH_1 = "OPD_Main"
+env.CHECKOUT_CREDENTIALS_ID_1 = "hari-user-github"
 execPullGithubReleases()
