@@ -53,7 +53,7 @@ env.pip_vehicle_Id = "43717197-bc95-49bf-b82f-1505d33c14b2"
 
 // Define common variables
 env.pip_archive_patterns = "qnx-hv-nxp-s32g/images/*.ui VIP_XSPACE_E2E/M7/vip-project-uC-AR45/out/variants/vip-mainboard/s32g-uC/arc/bin/"
-env.pip_sonar_property_file_path = "xspace-Pipeline/sw-factory/sonar.properties"
+env.pip_sonar_property_file_path = "xspace-Pipeline/sw-factory/sonar_m7.properties xspace-Pipeline/sw-factory/sonar_qnx.properties"
 
 //Define stages
 //env.pip_sonar_stage = "false"
