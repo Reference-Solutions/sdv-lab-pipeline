@@ -3,6 +3,7 @@
 env.pip_labels = "windows-lab-pc"
 
 // Define checkout variables
+// =========================
 env.CHECKOUT_URL_1 = "https://github.boschdevcloud.com/exmachina/qnx-hv-nxp-s32g.git"
 env.CHECKOUT_BRANCH_1 = "XSPACE_SDV"
 env.CHECKOUT_CREDENTIALS_ID_1 = "hari-user-github"
@@ -13,7 +14,8 @@ env.CHECKOUT_CREDENTIALS_ID_2 = "Github_RefSolution"
 
 env.CHECKOUT_COUNT = 2
 
-//Define ARC m7 variables
+// Define ARC m7 variables
+// =======================
 env.pip_bsw_dir_path = "VIP_XSPACE_E2E/M7/cubas-nxp-s32g-AR45"
 env.pip_build_dir_path = "VIP_XSPACE_E2E/M7/vip-project-uC-AR45"
 env.pip_bsw_pre_build_file_name = "PreBuild.bat"
@@ -28,11 +30,20 @@ env.pip_autosar_tool_env = "cdg.de"
 env.pip_project_variant = "VIP_MAIN_BOARD"
 
 // Define qnx variables
+// ====================
 env.pip_artifact_version = "v1.0.0"
 env.pip_qnx_sdk_path = "C:/Users/Public/qnx_7.1.0"
 env.pip_qnx_src_dir = "qnx-hv-nxp-s32g"
 
+// Define vrte pull variables
+// ==========================
+env.pip_vrte_artifactory_server_id = "artifactory-boschdevcloud"
+env.pip_vrte_artifact_pattern = "vrte-sol-conan-snapshots-local/vrte-ci-prj9/etas-vos-prj9-dev-package/13.0.0/stable/cfd38e750692cd4c1357f58ebb06121d/package/5b292503c6ae17ea0314bcb5710f3f32ecf466dc/7647285221895511c9bd117e9f203f4c/"
+env.pip_vrte_artifact_download_path = "vrte_package"
+
+
 // Define OTA process variables
+// ============================
 env.pip_gh_release_tag = "OPDv1.0.0"
 env.pip_gh_owner = "ATH8COB"
 env.pip_gh_repo = "opd"
@@ -52,18 +63,12 @@ env.pip_device_Id = "sdv-lab-demo"
 env.pip_vehicle_Id = "43717197-bc95-49bf-b82f-1505d33c14b2"
 
 // Define common variables
+// =======================
 env.pip_archive_patterns = "qnx-hv-nxp-s32g/images/*.ui VIP_XSPACE_E2E/M7/vip-project-uC-AR45/out/variants/vip-mainboard/s32g-uC/arc/bin/"
 env.pip_sonar_property_file_path = "xspace-Pipeline/sw-factory/sonar_m7.properties xspace-Pipeline/sw-factory/sonar_qnx.properties"
 
-//Define stages
-//env.pip_sonar_stage = "false"
-//env.pip_qnx_build_stage = "false"
-//env.pip_arc_build_stage = "false"
-//env.pip_checkout_stage = "false"
-//env.pip_archive_stage = "false"
-//env.pip_versioning_stage = "false"
-
-//Define Verification variables
+// Define Verification variables
+// =============================
 env.pip_robot_manifest_file_path = 'refsolution-rf-ci/manifest.xml'
 env.pip_robot_url = 'https://sourcecode.socialcoding.bosch.com/scm/~pow2kor/refsolution-rf-ci.git'
 env.pip_robot_branch = 'feature/16550-HiL_Validation'
@@ -71,9 +76,27 @@ env.pip_robot_checkout_credentials = 'Soco-credentials-hari'
 env.pip_robotframework_stage = 'true'
 env.pip_robot_jenkins_file_path = 'refsolution-rf-ci/Jenkinsfile'
 
-//Define notification stage variables
+// Define notification stage variables
+// ===================================
 env.pip_webhookurl = "https://bosch.webhook.office.com/webhookb2/15f2b8ac-ac44-4cf8-8ea7-15d9ac74af42@0ae51e19-07c8-4e4b-bb6d-648ee58410f4/JenkinsCI/a10ceccd01454db8b5ab28750cbc9056/7890af85-64c2-475d-b0d2-a5689d8799a1"
 env.pip_from = "Refsolutions XSPACE (MS/PJ-MNT) <XSPACE.Refsolutions@in.bosch.com>"
-env.pip_to = "duraisamy.hariharan@in.bosch.com, r.thejeswarareddy@in.bosch.com"
+env.pip_to = "duraisamy.hariharan@in.bosch.com, r.thejeswarareddy@in.bosch.com, sreenathreddy.bandapalli@in.bosch.com, k.karthickraja@in.bosch.com"
+
+// Define stages
+// =============
+// env.pip_checkout_scm_stage = 'false'
+// env.pip_artifactory_upload_stage = "false"
+// env.pip_sonar_stage = "false"
+// env.pip_qnx_build_stage = "false"
+// env.pip_arc_build_stage = "false"
+// env.pip_checkout_stage = "false"
+// env.pip_archive_stage = "false"
+// env.pip_versioning_stage = "false"
+// env.pip_verification_stage = "false"
+// env.pip_sw_package_creation_stage = "false"
+// env.pip_app_pull_stage = "false"
+// env.pip_desired_state_creation_stage = "false"
+// env.pip_device_creation_stage = "false"
+// env.pip_vehicle_creation_stage = "false"
 
 execSwFactoryPipeline()
