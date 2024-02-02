@@ -31,7 +31,7 @@ env.pip_project_variant = "VIP_MAIN_BOARD"
 
 // Define qnx variables
 // ====================
-env.pip_artifact_version = "v1.0.0"
+env.pip_build_version = "v1.0.0"
 env.pip_qnx_sdk_path = "C:/Users/Public/qnx_7.1.0"
 env.pip_qnx_src_dir = "qnx-hv-nxp-s32g"
 
@@ -98,5 +98,7 @@ env.pip_to = "duraisamy.hariharan@in.bosch.com, r.thejeswarareddy@in.bosch.com, 
 // env.pip_desired_state_creation_stage = "false"
 // env.pip_device_creation_stage = "false"
 // env.pip_vehicle_creation_stage = "false"
+
+//env.pip_git_tag_stage = "true"
 
 execSwFactoryPipeline()
