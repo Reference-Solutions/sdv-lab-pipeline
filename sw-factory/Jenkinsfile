@@ -31,7 +31,6 @@ env.pip_project_variant = "VIP_MAIN_BOARD"
 
 // Define qnx variables
 // ====================
-env.pip_build_version = "v1.0.0"
 env.pip_qnx_sdk_path = "C:/Users/Public/qnx_7.1.0"
 env.pip_qnx_src_dir = "qnx-hv-nxp-s32g"
 
@@ -64,6 +63,7 @@ env.pip_vehicle_Id = "43717197-bc95-49bf-b82f-1505d33c14b2"
 
 // Define common variables
 // =======================
+env.pip_build_version = "v1.0.0"
 env.pip_archive_patterns = "qnx-hv-nxp-s32g/images/*.ui VIP_XSPACE_E2E/M7/vip-project-uC-AR45/out/variants/vip-mainboard/s32g-uC/arc/bin/"
 env.pip_sonar_property_file_path = "xspace-Pipeline/sw-factory/sonar_m7.properties xspace-Pipeline/sw-factory/sonar_qnx.properties"
 
