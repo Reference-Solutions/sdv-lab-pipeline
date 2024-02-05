@@ -4,13 +4,13 @@ env.pip_labels = "windows-lab-pc"
 
 // Define checkout variables
 // =========================
-env.CHECKOUT_URL_1 = "https://github.boschdevcloud.com/exmachina/qnx-hv-nxp-s32g.git"
+env.CHECKOUT_URL_1 = "https://github.boschdevcloud.com/FUI1COB/qnx-hv-nxp-s32g.git"
 env.CHECKOUT_BRANCH_1 = "XSPACE_SDV"
 env.CHECKOUT_CREDENTIALS_ID_1 = "hari-user-github"
 
-env.CHECKOUT_URL_2 = "https://github.com/Reference-Solutions/VIP_XSPACE_E2E.git"
-env.CHECKOUT_BRANCH_2 = "master"
-env.CHECKOUT_CREDENTIALS_ID_2 = "Github_RefSolution"
+env.CHECKOUT_URL_2 = "https://github.boschdevcloud.com/FUI1COB/VIP_XSPACE_E2E.git"
+env.CHECKOUT_BRANCH_2 = "main"
+env.CHECKOUT_CREDENTIALS_ID_2 = "hari-user-github"
 
 env.CHECKOUT_COUNT = 2
 
@@ -92,7 +92,7 @@ env.pip_to = "duraisamy.hariharan@in.bosch.com, r.thejeswarareddy@in.bosch.com, 
 // env.pip_checkout_stage = "false"
 // env.pip_archive_stage = "false"
 // env.pip_versioning_stage = "false"
- env.pip_verification_stage = "false"
+// env.pip_verification_stage = "false"
 // env.pip_sw_package_creation_stage = "false"
 // env.pip_app_pull_stage = "false"
 // env.pip_desired_state_creation_stage = "false"
