@@ -1,4 +1,4 @@
-@Library('RefSolutions-Pipeliner@feature/sw-factory-pipeline-new') _ // Load the my-nested-library as a shared library
+@Library('ref-Solutions-Pipeliner@feature/sw-factory-ota-pipeline') _ // Load the my-nested-library as a shared library
 
 env.pip_labels = "windows-lab-pc"
 
