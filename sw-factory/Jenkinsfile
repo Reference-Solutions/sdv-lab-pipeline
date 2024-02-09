@@ -48,16 +48,16 @@ env.pip_gh_owner = "ATH8COB"
 env.pip_gh_repo = "opd"
 env.pip_gh_pattern = "OPD_main_v1.0.0.zip"
 env.pip_app_zip_sub_folder = "build_qnx710.zip"
-env.pip_swc_dir_path = 'xspace-Pipeline/ota-ng/swpkg/install_swc/'
-env.pip_gen_swp_dir_path = 'xspace-Pipeline/ota-ng/swpkg/gen_swp_fb/'
+env.pip_swc_dir_path = 'sdv-lab-pipeline/ota-ng/swpkg/install_swc/'
+env.pip_gen_swp_dir_path = 'sdv-lab-pipeline/ota-ng/swpkg/gen_swp_fb/'
 env.pip_app_dir_path = "home/ath8cob/actions-runner/_work/opd/opd/build_qnx710/src/"
 env.pip_app_name = "One_Pedal_Drive"
 env.pip_app_version = '1.0.0'
 env.pip_action_type = 'INSTALL'
 env.pip_vrtefs_tool_path = 'C:/toolbase/vrte_adaptive_studio/r23-08/vrte_fs/'
-env.pip_vpkg_dir_path = 'xspace-Pipeline/ota-ng/vpkg/'
+env.pip_vpkg_dir_path = 'sdv-lab-pipeline/ota-ng/vpkg/'
 env.pip_pantaris_node = 'Karthick'
-env.pip_pantaris_script_path = 'xspace-Pipeline/ota-ng/pantaris/scripts'
+env.pip_pantaris_script_path = 'sdv-lab-pipeline/ota-ng/pantaris/scripts'
 env.pip_device_Id = "sdv-lab-demo"
 env.pip_vehicle_Id = "43717197-bc95-49bf-b82f-1505d33c14b2"
 
@@ -65,7 +65,7 @@ env.pip_vehicle_Id = "43717197-bc95-49bf-b82f-1505d33c14b2"
 // =======================
 env.pip_build_version = "v1.0.0"
 env.pip_archive_patterns = "qnx-hv-nxp-s32g/images/*.ui VIP_XSPACE_E2E/M7/vip-project-uC-AR45/out/variants/vip-mainboard/s32g-uC/arc/bin/"
-env.pip_sonar_property_file_path = "xspace-Pipeline/sw-factory/sonar_m7.properties xspace-Pipeline/sw-factory/sonar_qnx.properties"
+env.pip_sonar_property_file_path = "sdv-lab-pipeline/sw-factory/sonar_m7.properties sdv-lab-pipeline/sw-factory/sonar_qnx.properties"
 
 // Define Verification variables
 // =============================
